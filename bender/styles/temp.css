@@ -2,7 +2,6 @@
 /*  !!! HEADER - RIBBON !!!  */
 
 .header {
-    background: hotpink;
     height: 100px;
     width: 100%;
     position: fixed;
@@ -13,107 +12,33 @@
     margin: 30px 300px;
 }
 
-/*  !!! HEADER - MENU !!!  */
-
-.menu-bar {
-    position: relative;
-    bottom: 28px;
-}
-
-.menu {
-    height: 30px;
-    width: 100px;
-    background: purple;
-    position: relative;
-    bottom: -1px;
-    left: 50px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.show-menu {
-    display: inline-block;
-    line-height: 30px;
-    z-index: 11;
-}
-
-.menu-links {
-    height: 30px;
-    width: 500px;
-    background: brown;
-    position: relative;
-    bottom: 45px;
-    z-index: -1000;
-    transition: bottom 1.5s ease-in-out;
-}
-
-.inline-menu ul li {
-    display: inline-block;
-    width: 100px;
-    line-height: 30px;
-    text-align: center;
-}
-
-.menu-links:hover ul li {
-    bottom: 15px;
-}
-
-.show-menu:hover~.menu-links {
-    bottom: 15px;
-}
-
 /* ========================================================= */
 
 /*  !!! MAIN !!!  */
 
 /*  !!! MEET THE BENDER !!!  */
-.meet {
-    margin-top: 100px;
-    height: 500px;
-    background: orangered;
-    text-align: center;
-}
 
 /*  !!! DO THE BENDER !!!  */
 .do {
     height: 500px;
-    background: darkorange;
     text-align: center;
 }
 
-.do h2 {
-    margin-top: 0px;
-}
-
-/*  !!! LOCATE THE BENDER !!!  */
-.locate {
+/*  !!! BOOK THE BENDER !!!  */
+.book {
     height: 500px;
-    background: darkred;
     text-align: center;
-}
-
-.locate h2 {
-    margin-top: 0px;
 }
 
 /*  !!! CONTACT THE BENDER !!!  */
 .contact {
     height: 500px;
-    background: darkmagenta;
     text-align: center;
-}
-
-.contact h2 {
-    margin-top: 0px;
 }
 
 /*  !!! FOOTER !!!  */
 .footer {
-    height: 100px;
-    background: firebrick;
+    height: 200px;
     text-align: center;
 }
 
-.footer h2 {
-    margin-top: 0px;
-}

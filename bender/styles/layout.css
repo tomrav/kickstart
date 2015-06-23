@@ -1,0 +1,140 @@
+/* ### HEADER ### */
+
+
+.header {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.header h1 {
+    margin: 30px 15%;
+}
+
+/*  ### HEADER - MENU ###  */
+
+.menu {
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    left: 50px;
+    top: -3px;
+    text-align: center;
+}
+
+.show-menu {
+    display: inline-block;
+    line-height: 30px;
+}
+
+.menu-links {
+    max-width: 420px;
+    position: relative;
+    left: 50px;
+    opacity: 0;
+    height: 0;
+    /*top: 30px;*/
+    transition: all 1.5s ease-in-out;
+}
+
+.nav-menu {
+    position: relative;
+    bottom: 27px;
+}
+
+.nav-menu ul li {
+    display: inline-block;
+    width: 100px;
+    line-height: 30px;
+}
+
+.show-menu:hover + ul,
+.menu-links:hover {
+    top: 30px;
+    opacity: 1;
+    height: 30px;
+}
+
+.section-title {
+    padding: 25px 0 0 0;
+}
+
+.footer-title {
+    padding: 50px 0;
+}
+
+/*  ### MAIN - MEET BENDER ###  */
+
+.meet {
+    margin-top: 100px;
+    padding: 0 0 10px 0;
+}
+
+.intro-container {
+    max-width: 70%;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.intro-text {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.intro-container figure {
+    width: 25%;
+    float: right;
+    margin: 5px;
+}
+
+.intro-container figure img {
+    max-width: 100%;
+}
+
+.intro-container figure figcaption {
+    text-align: center;
+}
+
+.intro-text div {
+    overflow: auto;
+}
+
+/*  ### MAIN - DO THE BENDER ###  */
+
+.services-container {
+    max-width: 70%;
+    margin: 10px auto;
+    border: 2px dashed rgb(51, 37, 50) ;
+}
+
+.service {
+    display: inline-block;
+}
+
+figure.service {
+    margin: 5px;
+}
+
+figure.service img {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.booze {
+    width: 30%;
+}
+
+.bets {
+    width: 30%;
+}
+
+.bots {
+    width: 30%;
+}
+
+

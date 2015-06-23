@@ -1,0 +1,66 @@
+
+
+/*
+        !!! TEMPLATE COLORS !!!
+
+        dark purple - rgb(51, 37, 50)
+        purple brown- rgb(100, 77, 82)
+        happy orange - rgb(247, 122, 82)
+        orange orange - rgb(255, 151, 79)
+        grey - rgb(164, 154, 135)
+
+*/
+
+.body-bg {
+    background: rgb(51, 37, 50);
+}
+
+.header {
+    background: rgb(51, 37, 50);
+}
+
+.header-title {
+    color: rgb(247, 122, 82);
+}
+
+.menu {
+    background: rgb(247, 122, 82);
+}
+
+.meet {
+     background: rgb(255, 151, 79);
+ }
+
+.intro-container {
+    border: 2px rgb(51, 37, 50) dashed;
+}
+
+.intro-text {
+    background: rgba(51, 37, 50, 0.2);
+}
+
+.do {
+     background: rgb(247, 122, 82);
+ }
+
+.book {
+     background: rgb(100, 77, 82);
+}
+
+.contact {
+    background: rgb(164, 154, 135);
+ }
+
+.footer {
+    background: rgb(51, 37, 50);
+    background: url("../resources/images/New_New_York_Cityscape.jpg");
+    background-position: bottom;
+}
+
+.footer-title {
+    color: rgb(247, 122, 82);
+}
+
+.section-title {
+    color: rgb(51, 37, 50);
+}
