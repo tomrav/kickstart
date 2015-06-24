@@ -104,14 +104,75 @@
             </figure>
         </div>
     </section>
+
     <section id="book" class="book">
         <!-- BOOK THE BENDER -->
         <h2 class="section-title">BOOK THE BENDER</h2>
+        <div class="packages">
+            <div class="single">
+                <img src="http://lorempixel.com/150/150/cats" alt=""/>
+            </div>
+            <div class="group">
+                <img src="http://lorempixel.com/150/150/cats" alt=""/>
+
+            </div>
+            <div class="enterprise">
+                <img src="http://lorempixel.com/150/150/cats" alt=""/>
+
+            </div>
+        </div>
     </section>
+
     <section id="contact" class="contact">
         <!-- CONTACT THE BENDER -->
         <h2 class="section-title">CONTACT THE BENDER</h2>
+
+        <form action="./blah" method="post">
+            <div class="form-inner-container">
+                <label class="clearfix">
+                <span>
+                    Title:
+                </span>
+                    <select name="title">
+                        <option value="Mr">Mr.</option>
+                        <option value="Mrs">Mrs.</option>
+                        <option value="Ms">Ms.</option>
+                    </select>
+                </label>
+                <label for="name" class="clearfix">
+                <span>
+                    Full Name:
+                </span>
+                    <input id="name" name="name" type="text" placeholder="John Smith" required/>
+                </label>
+                <label for="email" class="clearfix">
+                <span>
+                    Your email:
+                </span>
+                    <input id="email" name="email" type="email" placeholder="blah@blah.com" required/>
+                </label>
+                <label for="question" class="clearfix">
+                <span>
+                    Your question:
+                </span>
+                    <textarea id="question" name="question" placeholder="Enter your question here"></textarea>
+                </label>
+                <label for="dateOfBirth" class="clearfix">
+                <span>
+                  Birthday:
+                </span>
+                    <input id="dateOfBirth" name="dateOfBirth" type="date"/>
+                </label>
+
+                <div class="clearfix submit">
+                    <button type="submit" class="button-submit" value="Send your question!">
+                        Send your question
+                    </button>
+                </div>
+            </div>
+        </form>
     </section>
+
 </main>
 
 <footer class="footer">

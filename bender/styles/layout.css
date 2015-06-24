@@ -1,3 +1,15 @@
+/* ### BODY FIX ### */
+/* ### push content off the header ### */
+.body-bg {
+    margin-top: 100px;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 /* ### HEADER ### */
 
 
@@ -10,6 +22,7 @@
 
 .header h1 {
     margin: 30px 15%;
+    display: inline-block;
 }
 
 /*  ### HEADER - MENU ###  */
@@ -19,7 +32,7 @@
     width: 100px;
     position: absolute;
     left: 50px;
-    top: -3px;
+    bottom: 4px;
     text-align: center;
 }
 
@@ -67,7 +80,6 @@
 /*  ### MAIN - MEET BENDER ###  */
 
 .meet {
-    margin-top: 100px;
     padding: 0 0 10px 0;
 }
 
@@ -105,6 +117,11 @@
 
 /*  ### MAIN - DO THE BENDER ###  */
 
+.do {
+    padding-bottom: 30px;
+    text-align: center;
+}
+
 .services-container {
     max-width: 70%;
     margin: 10px auto;
@@ -137,4 +154,88 @@ figure.service img {
     width: 30%;
 }
 
+/*  ### MAIN - BOOK THE BENDER ###  */
 
+.book {
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.packages {
+
+}
+
+
+/*  ### MAIN - CONTACT THE BENDER ###  */
+
+.contact {
+    padding-bottom: 15px;
+}
+
+.form-inner-container {
+    margin: 0 auto;
+    width: 50%;
+    padding: 15px;
+}
+
+.form-inner-container label {
+    display: block;
+    padding: 10px 10px;
+    margin: 5px;
+}
+
+.form-inner-container label span {
+    vertical-align: top;
+    float: left;
+    display: inline-block;
+    width: 40%;
+}
+
+.form-inner-container label select,
+.form-inner-container label textarea,
+.form-inner-container label input {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    border-radius: 0;
+    display: inline-block;
+    width: 60%;
+    border: none;
+    padding: 5px 5px;
+    margin: 0;
+    resize: none;
+    height: 2rem;
+    float: left;
+}
+
+.form-inner-container label input[type='color'] {
+    padding: 1px 1px;
+}
+
+.submit {
+    margin: 0 10px;
+}
+
+.submit:hover button::before {
+    content: "\2799";
+    margin: 0 5px;
+    font-size: large;
+}
+
+.button-submit {
+    width: 220px;
+    height: 50px;
+    margin: 10px 0;
+    float: right;
+    line-height: 50px;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    border: none;
+    text-align: right;
+    padding: 0 15px 0 0;
+}
+
+/*  ### FOOTER ###  */
+
+.footer {
+    height: 200px;
+}

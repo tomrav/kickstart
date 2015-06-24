@@ -9,6 +9,7 @@ body {
 
 .header-title {
     font-family: nexa_rust_handmadeextended, sans-serif;
+    border-bottom: 2px dashed rgb(247, 122, 82);
 
 }
 
