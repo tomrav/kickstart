@@ -1,0 +1,47 @@
+
+/*  ###################################  */
+/*  ###         BODY FIX            ###  */
+/*  ### push content off the header ###  */
+/*  ###################################  */
+
+.body-bg {
+    padding-top: 100px;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* ### HEADER ### */
+
+
+.header {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.header h1 {
+    margin: 30px 15%;
+    display: inline-block;
+}
+
+.section-title {
+    margin: 25px;
+}
+
+.footer-title {
+    padding: 50px 0;
+}
+
+.section-padding {
+    padding: 10px;
+    margin: 15px 0;
+}
+
+.section-padding:first-child {
+    margin-top: 0;
+}

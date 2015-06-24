@@ -1,31 +1,8 @@
-/* ### BODY FIX ### */
-/* ### push content off the header ### */
-.body-bg {
-    margin-top: 100px;
-}
-
-.clearfix:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-/* ### HEADER ### */
 
 
-.header {
-    height: 100px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-}
-
-.header h1 {
-    margin: 30px 15%;
-    display: inline-block;
-}
-
+/*  #####################  */
 /*  ### HEADER - MENU ###  */
+/*  #####################  */
 
 .menu {
     height: 30px;
@@ -69,21 +46,16 @@
     height: 30px;
 }
 
-.section-title {
-    padding: 25px 0 0 0;
-}
-
-.footer-title {
-    padding: 50px 0;
-}
-
+/*  ##########################  */
 /*  ### MAIN - MEET BENDER ###  */
+/*  ##########################  */
 
 .meet {
-    padding: 0 0 10px 0;
+
 }
 
 .intro-container {
+    box-sizing: border-box;
     max-width: 70%;
     margin: 10px auto;
     padding: 10px;
@@ -115,21 +87,32 @@
     overflow: auto;
 }
 
+/*  ############################  */
 /*  ### MAIN - DO THE BENDER ###  */
+/*  ############################  */
 
 .do {
-    padding-bottom: 30px;
     text-align: center;
+}
+
+.cheating {
+    content: "";
+    display: block;
+    height: 100px; /* fixed header height*/
+    margin: -100px 0 0 0; /* negative fixed header height */
+    visibility: hidden;
 }
 
 .services-container {
     max-width: 70%;
-    margin: 10px auto;
-    border: 2px dashed rgb(51, 37, 50) ;
+    margin: 0 auto;
+    padding: 10px 0;
 }
 
 .service {
     display: inline-block;
+    width: 30%;
+    vertical-align: top;
 }
 
 figure.service {
@@ -143,33 +126,117 @@ figure.service img {
 }
 
 .booze {
-    width: 30%;
+    display: inline-block;
+    width: 220px;
+    height: 220px;
+    background: url("../resources/images/bender-booze.png");
+    border-radius: 50%;
+    background-position-x: 40px;
+    overflow: hidden;
+}
+
+.ribbon {
+    padding: 15px;
+    color: rgb(247, 122, 82);
+    background: rgb(51, 37, 50);
+    text-align: center;
+    position: relative;
+    top: 64%;
 }
 
 .bets {
-    width: 30%;
+    display: inline-block;
+    width: 220px;
+    height: 220px;
+    background: url("../resources/images/bender-bets.png");
+    border-radius: 50%;
+    background-position-y: -45px;
+    overflow: hidden;
+
 }
 
 .bots {
-    width: 30%;
+    display: inline-block;
+    width: 220px;
+    height: 220px;
+    background: url("../resources/images/bender-bots.png");
+    border-radius: 50%;
+    background-position-y: -45px;
+    overflow: hidden;
 }
 
+/*  ##############################  */
 /*  ### MAIN - BOOK THE BENDER ###  */
+/*  ##############################  */
 
 .book {
-    padding-bottom: 15px;
     text-align: center;
 }
 
 .packages {
+    max-width: 70%;
+    height: 400px;
+    padding: 5px;
+    margin: 10px auto;
+    border: 2px dashed rgb(247, 122, 82);
 
 }
 
+.packages > div {
+    display: inline-block;
+    vertical-align: top;
+}
 
+.enterprise-container {
+    width: 55%;
+    height: 100%;
+    padding: 0 10px 0 0;
+    /*max-width: 500px;*/
+}
+
+.enterprise-container img {
+    width: 100%;
+    height: 100%;
+    /*max-width: 500px;*/
+}
+
+.single-or-group {
+    margin-left: -4px;
+    width: 40%;
+    height: 100%;
+    /*overflow: hidden;*/
+
+}
+
+.single-or-group > img {
+    float: left;
+    /*display: inline-block;*/
+    max-height: 400px;
+    background-position-x: ;
+}
+
+.single {
+    display: inline-block;
+    height: 50%;
+    margin-left: 5px;
+}
+
+.group {
+    display: inline-block;
+    height: 50%;
+    border-bottom: 2px dashed rgb(247, 122, 82);
+}
+
+.group > img {
+    /*float: left;*/
+}
+
+/*  #################################  */
 /*  ### MAIN - CONTACT THE BENDER ###  */
+/*  #################################  */
 
 .contact {
-    padding-bottom: 15px;
+
 }
 
 .form-inner-container {
@@ -185,7 +252,7 @@ figure.service img {
 }
 
 .form-inner-container label span {
-    vertical-align: top;
+    /*vertical-align: middle;*/
     float: left;
     display: inline-block;
     width: 40%;
@@ -203,7 +270,7 @@ figure.service img {
     padding: 5px 5px;
     margin: 0;
     resize: none;
-    height: 2rem;
+    height: 3rem;
     float: left;
 }
 
@@ -212,7 +279,7 @@ figure.service img {
 }
 
 .submit {
-    margin: 0 10px;
+    margin: 10px 10px;
 }
 
 .submit:hover button::before {
@@ -222,9 +289,9 @@ figure.service img {
 }
 
 .button-submit {
-    width: 220px;
-    height: 50px;
-    margin: 10px 0;
+    width: 210px;
+    height: 45px;
+    margin: 10px 5px 0 0;
     float: right;
     line-height: 50px;
     vertical-align: middle;
@@ -234,7 +301,9 @@ figure.service img {
     padding: 0 15px 0 0;
 }
 
+/*  ##############  */
 /*  ### FOOTER ###  */
+/*  ##############  */
 
 .footer {
     height: 200px;

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/temp.css"/>
     <link rel="stylesheet" href="styles/colors.css"/>
     <link rel="stylesheet" href="styles/typography.css"/>
+    <link rel="stylesheet" href="styles/header-footer-helpers.css"/>
     <link rel="stylesheet" href="styles/layout.css"/>
 </head>
 <body class="body-bg">
@@ -46,7 +47,8 @@
 </header>
 
 <main>
-    <section id="meet" class="meet">
+    <section class="meet section-padding">
+        <div id="meet" class="cheating"></div>
         <h2 class="section-title">MEET THE BENDER</h2>
 
         <div class="intro-container">
@@ -76,97 +78,123 @@
         </div>
     </section>
 
-    <section id="do" class="do">
+    <section class="do section-padding">
+        <div id="do" class="cheating"></div>
         <h2 class="section-title">DO THE BENDER</h2>
 
         <div class="services-container">
-            <h3>SERVICES PLACEHOLDER</h3>
-            <figure class="service booze">
-                <p>
-                    BOOZE
-                </p>
-                <img src="http://lorempixel.com/200/200/cats" alt=""/>
-                <figcaption> SAMPLE TEXT</figcaption>
-            </figure>
-            <figure class="service bets">
-                <p>
-                    BETS
-                </p>
-                <img src="http://lorempixel.com/200/200/cats" alt=""/>
-                <figcaption> SAMPLE TEXT</figcaption>
-            </figure>
-            <figure class="service bots">
-                <p>
-                    BOTS
-                </p>
-                <img src="http://lorempixel.com/200/200/cats" alt=""/>
-                <figcaption> SAMPLE TEXT</figcaption>
-            </figure>
+            <div class="service">
+                <div class="bets">
+                    <div class="ribbon">
+                        Bets
+                    </div>
+                </div>
+                <span>
+
+                </span>
+                Consider yourself lucky? Well, Bender will teach you these 7 tricks Casinos galaxy wide hate
+            </div>
+            <div class="service">
+                <div class="booze">
+                    <div class="ribbon">
+                        Booze
+                    </div>
+                </div>
+                <span>
+                    Bender will show you how to drink until you are done..
+                    ..and then how to drink some more.
+                </span>
+            </div>
+            <div class="service">
+                <div class="bots">
+                    <div class="ribbon">
+                        Bots
+                    </div>
+                </div>
+                <span>
+                    Feeling lonely? Want to hold someones hand or clamp? Just a cuddle? Bender is a ladies man, and he
+                    will show you through the ropes
+                </span>
+            </div>
         </div>
     </section>
 
-    <section id="book" class="book">
-        <!-- BOOK THE BENDER -->
+    <section class="book section-padding">
+        <div id="book" class="cheating"></div>
         <h2 class="section-title">BOOK THE BENDER</h2>
+
         <div class="packages">
-            <div class="single">
-                <img src="http://lorempixel.com/150/150/cats" alt=""/>
-            </div>
-            <div class="group">
-                <img src="http://lorempixel.com/150/150/cats" alt=""/>
+            <div class="enterprise-container">
+                <h3>Enterprise Package</h3>
 
-            </div>
-            <div class="enterprise">
-                <img src="http://lorempixel.com/150/150/cats" alt=""/>
+                <div class="enterprise">
+                    <!--<img src="resources/images/bender-clones.png" alt=""/>-->
+                    <span>
+                        Let Bender take your entire megacorp on a wild ride through the unknown parts of New New York!
+                        Click below to begin your registration.
+                    </span>
 
+                    <p>
+                        Note: Corporation sized 15,000 to 999,999 only.
+                    </p>
+                </div>
+            </div>
+            <div class="single-or-group">
+                <img src="resources/images/bite-my-shiny-metal-s.png" alt=""/>
+
+                <div class="group">
+                    <h4>Group Package</h4>
+                </div>
+                <div class="single">
+                    <h4>Singles Package</h4>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <!-- CONTACT THE BENDER -->
+    <section class="contact section-padding">
+        <div id="contact" class="cheating"></div>
         <h2 class="section-title">CONTACT THE BENDER</h2>
 
         <form action="./blah" method="post">
             <div class="form-inner-container">
                 <label class="clearfix">
                 <span>
-                    Title:
+                    Title
                 </span>
                     <select name="title">
-                        <option value="Mr">Mr.</option>
-                        <option value="Mrs">Mrs.</option>
-                        <option value="Ms">Ms.</option>
+                        <option value="Mr">Dont know</option>
+                        <option value="Mrs">Dont care</option>
                     </select>
                 </label>
                 <label for="name" class="clearfix">
                 <span>
-                    Full Name:
+                    Full Name
                 </span>
-                    <input id="name" name="name" type="text" placeholder="John Smith" required/>
+                    <input id="name" name="name" type="text" placeholder="Bender the great" required/>
                 </label>
                 <label for="email" class="clearfix">
                 <span>
-                    Your email:
+                    Your email
                 </span>
-                    <input id="email" name="email" type="email" placeholder="blah@blah.com" required/>
+                    <input id="email" name="email" type="email" placeholder="b@ender.com" required/>
                 </label>
                 <label for="question" class="clearfix">
                 <span>
-                    Your question:
+                    Your question
                 </span>
-                    <textarea id="question" name="question" placeholder="Enter your question here"></textarea>
+                    <textarea id="question" name="question" placeholder="Keep it short will you"></textarea>
                 </label>
                 <label for="dateOfBirth" class="clearfix">
                 <span>
-                  Birthday:
+                  Date of Birth
                 </span>
                     <input id="dateOfBirth" name="dateOfBirth" type="date"/>
                 </label>
 
                 <div class="clearfix submit">
                     <button type="submit" class="button-submit" value="Send your question!">
-                        Send your question
+                        Submit Request
                     </button>
                 </div>
             </div>
