@@ -9,12 +9,14 @@
 
 .intro-container {
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     margin: 10px auto;
     padding: 10px;
 }
 
 .intro-text {
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     display: inline-block;
     padding: 10px;
     width: 100%;
@@ -315,6 +317,7 @@ background-position-x: 40px;
 .form-inner-container label input {
     -webkit-appearance: none;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     border-radius: 0;
     display: inline-block;
     width: 60%;
