@@ -324,9 +324,12 @@ background-position-x: 40px;
     border: none;
     padding: 2px 5px;
     margin: 0;
-    resize: vertical;
     height: 3rem;
     float: left;
+}
+
+.form-inner-container label textarea {
+    resize: vertical;
 }
 
 .form-inner-container label input[type='color'] {
