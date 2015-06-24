@@ -1,15 +1,18 @@
-/*
-        !!! TEMPLATE COLORS !!!
 
-        dark purple - rgb(51, 37, 50)
-        purple brown- rgb(100, 77, 82)
-        happy orange - rgb(247, 122, 82)
-        orange orange - rgb(255, 151, 79)
-        grey - rgb(164, 154, 135)
+/*  ##############################################
+    ### TEMPLATE COLORS ###
 
+    dark purple - rgb(51, 37, 50)
+    purple brown- rgb(100, 77, 82)
+    happy orange - rgb(247, 122, 82)
+    orange orange - rgb(255, 151, 79)
+    grey - rgb(164, 154, 135)
+    ##############################################
 */
 
+/*  ###############  */
 /*  ### GENERAL ###  */
+/*  ###############  */
 
 .section-title {
     color: rgb(51, 37, 50);
@@ -20,7 +23,9 @@
     background: rgb(51, 37, 50);
 }
 
+/*  ##############  */
 /*  ### HEADER ###  */
+/*  ##############  */
 
 
 .header {
@@ -37,11 +42,12 @@
 }
 
 .menu-links li a{
-    text-decoration: none;
     color: rgb(51, 37, 50);
 }
 
+/*  ##############  */
 /*  ### FOOTER ###  */
+/*  ##############  */
 
 .footer {
     background: rgb(51, 37, 50);
@@ -53,11 +59,13 @@
     color: rgb(247, 122, 82);
 }
 
+/*  ##############################  */
 /*  ### MAIN - MEET THE BENDER ###  */
+/*  ##############################  */
 
 .meet {
-     background: rgb(255, 151, 79);
- }
+    background: rgb(255, 151, 79);
+}
 
 .intro-container {
     border: 2px rgb(51, 37, 50) dashed;
@@ -67,18 +75,22 @@
     background: rgba(51, 37, 50, 0.2);
 }
 
+/*  ############################  */
 /*  ### MAIN - DO THE BENDER ###  */
+/*  ############################  */
 
 .do {
-     background: rgb(247, 122, 82);
- }
+    background: rgb(247, 122, 82);
+}
 
 .services-container {
     border: 2px dashed rgb(51, 37, 50);
 }
 
 
+/*  ##############################  */
 /*  ### MAIN - BOOK THE BENDER ###  */
+/*  ##############################  */
 
 .book {
     background: rgb(100, 77, 82);
@@ -93,10 +105,9 @@
 
 }
 
-
-
-
+/*  #################################  */
 /*  ### MAIN - CONTACT THE BENDER ###  */
+/*  #################################  */
 
 .contact {
     background: rgb(164, 154, 135);
@@ -128,7 +139,10 @@
     color: rgb(51, 37, 50);
 }
 
-/* ### color input placeholder values ### */
+/*  ######################################  */
+/*  ### color input placeholder values ###  */
+/*  ######################################  */
+
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    rgba(51, 37, 50, 0.5);
 }

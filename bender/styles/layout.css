@@ -1,51 +1,4 @@
 
-
-/*  #####################  */
-/*  ### HEADER - MENU ###  */
-/*  #####################  */
-
-.menu {
-    height: 30px;
-    width: 100px;
-    position: absolute;
-    left: 50px;
-    bottom: 4px;
-    text-align: center;
-}
-
-.show-menu {
-    display: inline-block;
-    line-height: 30px;
-}
-
-.menu-links {
-    max-width: 420px;
-    position: relative;
-    left: 50px;
-    opacity: 0;
-    height: 0;
-    /*top: 30px;*/
-    transition: all 1.5s ease-in-out;
-}
-
-.nav-menu {
-    position: relative;
-    bottom: 27px;
-}
-
-.nav-menu ul li {
-    display: inline-block;
-    width: 100px;
-    line-height: 30px;
-}
-
-.show-menu:hover + ul,
-.menu-links:hover {
-    top: 30px;
-    opacity: 1;
-    height: 30px;
-}
-
 /*  ##########################  */
 /*  ### MAIN - MEET BENDER ###  */
 /*  ##########################  */
@@ -56,7 +9,6 @@
 
 .intro-container {
     box-sizing: border-box;
-    max-width: 70%;
     margin: 10px auto;
     padding: 10px;
 }
@@ -87,6 +39,34 @@
     overflow: auto;
 }
 
+@media only screen and (max-width: 920px) {
+
+    .intro-container figure figcaption {
+        font-size: 0.85rem;
+    }
+
+    .intro-text div {
+        overflow: visible;
+    }
+    
+    @media only screen and (max-width: 500px) {
+
+        .intro-container figure {
+            display: block;
+            width: 95%;
+        }
+
+        .intro-container figure figcaption {
+            font-size: 2rem;
+            padding-bottom: 5px;
+            border-bottom: 2px dashed rgb(100, 77, 82);
+            margin-bottom: 5px;
+        }
+
+    }
+
+}
+
 /*  ############################  */
 /*  ### MAIN - DO THE BENDER ###  */
 /*  ############################  */
@@ -104,7 +84,6 @@
 }
 
 .services-container {
-    max-width: 70%;
     margin: 0 auto;
     padding: 10px 0;
 }
@@ -115,24 +94,44 @@
     vertical-align: top;
 }
 
-figure.service {
-    margin: 5px;
+.service > div {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10px auto;
 }
 
-figure.service img {
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+@media only screen and (max-width: 840px) {
+
+    .service {
+        display: block;
+        width: 95%;
+        max-width: 320px;
+        margin: 25px auto;
+        padding: 10px 0;
+        border: 2px dashed rgb(100, 77, 82);
+    }
+
+    .service span {
+        margin: 0 10px;
+        display: inline-block;
+    }
+}
+
+.bets {
+    background: url("../resources/images/bender-bets.png");
+    background-position-y: -45px;
 }
 
 .booze {
-    display: inline-block;
-    width: 220px;
-    height: 220px;
-    background: url("../resources/images/bender-booze.png");
-    border-radius: 50%;
-    background-position-x: 40px;
-    overflow: hidden;
+background: url("../resources/images/bender-booze.png");
+background-position-x: 40px;
+}
+
+.bots {
+    background: url("../resources/images/bender-bots.png");
+    background-position-y: -45px;
 }
 
 .ribbon {
@@ -144,27 +143,6 @@ figure.service img {
     top: 64%;
 }
 
-.bets {
-    display: inline-block;
-    width: 220px;
-    height: 220px;
-    background: url("../resources/images/bender-bets.png");
-    border-radius: 50%;
-    background-position-y: -45px;
-    overflow: hidden;
-
-}
-
-.bots {
-    display: inline-block;
-    width: 220px;
-    height: 220px;
-    background: url("../resources/images/bender-bots.png");
-    border-radius: 50%;
-    background-position-y: -45px;
-    overflow: hidden;
-}
-
 /*  ##############################  */
 /*  ### MAIN - BOOK THE BENDER ###  */
 /*  ##############################  */
@@ -174,62 +152,132 @@ figure.service img {
 }
 
 .packages {
-    max-width: 70%;
     height: 400px;
-    padding: 5px;
     margin: 10px auto;
-    border: 2px dashed rgb(247, 122, 82);
+    border: 2px dashed rgb(51, 37, 50);
 
 }
 
 .packages > div {
     display: inline-block;
     vertical-align: top;
+    height: 100%;
 }
 
 .enterprise-container {
-    width: 55%;
+    width: 45%;
     height: 100%;
     padding: 0 10px 0 0;
-    /*max-width: 500px;*/
 }
 
-.enterprise-container img {
-    width: 100%;
-    height: 100%;
-    /*max-width: 500px;*/
+.book-bender {
+    margin: 10px 25px 25px 25px;
+    padding: 15px;
+    font-size: 1.1em;
 }
 
 .single-or-group {
-    margin-left: -4px;
-    width: 40%;
-    height: 100%;
-    /*overflow: hidden;*/
+    width: 30%;
+    height: 400px
+    display: inline-block;
 
 }
 
-.single-or-group > img {
-    float: left;
-    /*display: inline-block;*/
+.single-or-group div h4 {
+    margin: 25px 0 5px 0;
+}
+
+.package-picture {
     max-height: 400px;
-    background-position-x: ;
+}
+
+.group {
+    display: block;
+    height: 43%;
+    border-bottom: 2px dashed rgb(164, 154, 135);
 }
 
 .single {
-    display: inline-block;
+    display: block;
     height: 50%;
     margin-left: 5px;
 }
 
-.group {
-    display: inline-block;
-    height: 50%;
-    border-bottom: 2px dashed rgb(247, 122, 82);
+@media only screen and (max-width: 730px) {
+
+    .packages {
+        height: auto;
+    }
+
+    .packages > .enterprise-container {
+        height: 400px;
+    }
+
+    .package-picture {
+        float: right;
+    }
+
+    .single-or-group {
+        width: 100%;
+    }
+
+    .group {
+        border-bottom: none;
+    }
+
+    .packages > .single-or-group {
+        display: block;
+    }
+
+    .single-or-group > div {
+        display: inline-block;
+        float: left;
+    }
+
+    .single-or-group > div {
+        border-top: 2px dashed rgb(164, 154, 135);
+        padding-bottom: 25px;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .package-picture {
+            margin-top: 25px;
+        }
+
+        .single-or-group {
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .single-or-group > div {
+            border-top: 2px dashed rgb(164, 154, 135);
+            padding-bottom: 25px;
+        }
+
+        @media only screen and (max-width: 590px) {
+
+            .enterprise-container {
+                width: 60%;
+            }
+
+            @media only screen and (max-width: 450px) {
+
+                .enterprise-container {
+                    width: 90%;
+                    padding: 5px;
+                }
+
+                .package-picture {
+                    display: none;
+                }
+
+            }
+        }
+    }
 }
 
-.group > img {
-    /*float: left;*/
-}
+
 
 /*  #################################  */
 /*  ### MAIN - CONTACT THE BENDER ###  */
@@ -241,18 +289,22 @@ figure.service img {
 
 .form-inner-container {
     margin: 0 auto;
-    width: 50%;
     padding: 15px;
 }
 
+.form-inner-container:first-child {
+    padding-top: 0;
+}
+
 .form-inner-container label {
+    line-height: 3rem;
+    vertical-align: middle;
     display: block;
     padding: 10px 10px;
     margin: 5px;
 }
 
 .form-inner-container label span {
-    /*vertical-align: middle;*/
     float: left;
     display: inline-block;
     width: 40%;
@@ -267,9 +319,9 @@ figure.service img {
     display: inline-block;
     width: 60%;
     border: none;
-    padding: 5px 5px;
+    padding: 2px 5px;
     margin: 0;
-    resize: none;
+    resize: vertical;
     height: 3rem;
     float: left;
 }
@@ -299,6 +351,36 @@ figure.service img {
     border: none;
     text-align: right;
     padding: 0 15px 0 0;
+}
+
+@media only screen and (max-width: 480px) {
+
+    .form-inner-container label span {
+        float: none;
+        width: 100%;
+    }
+
+    .form-inner-container label select,
+    .form-inner-container label textarea,
+    .form-inner-container label input {
+        float: none;
+        width: 100%;
+    }
+
+    .button-submit {
+        display: block;
+        float: none;
+        width: initial;
+        margin: 10px auto;
+        padding: 0 15px;
+    }
+
+    .submit:hover button::before {
+        content: '';
+        margin: 0;
+        display: none;
+    }
+
 }
 
 /*  ##############  */
