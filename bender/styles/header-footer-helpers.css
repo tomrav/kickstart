@@ -113,7 +113,7 @@
         }
 
         .menu::before {
-            content: "\2630";
+            content: "\2261";
         }
 
         .menu span {
