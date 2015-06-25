@@ -180,9 +180,7 @@ background-position-x: 40px;
 
 .single-or-group {
     width: 30%;
-    height: 400px
-    display: inline-block;
-
+    /*margin-left: 10px;*/
 }
 
 .single-or-group div h4 {
@@ -205,7 +203,7 @@ background-position-x: 40px;
     margin-left: 5px;
 }
 
-@media only screen and (max-width: 730px) {
+@media only screen and (max-width: 745px) {
 
     .packages {
         height: auto;
@@ -322,7 +320,7 @@ background-position-x: 40px;
     display: inline-block;
     width: 60%;
     border: none;
-    padding: 2px 5px;
+    padding: 0 5px;
     margin: 0;
     height: 3rem;
     float: left;

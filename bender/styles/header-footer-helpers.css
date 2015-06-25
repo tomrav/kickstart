@@ -27,15 +27,24 @@
 
 .header h1 {
     margin: 30px 15%;
-    display: inline-block;
+    display: block;
 }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 770px) {
+
     .header h1 {
-        margin: 30px 0;
-        display: block;
+        font-size: 1.5em;
+        text-align: center;
     }
+
 }
+
+/*@media only screen and (max-width: 1050px) {*/
+    /*.header h1 {*/
+        /*margin: 30px 0;*/
+        /*display: block;*/
+    /*}*/
+/*}*/
 
 .section-title {
     margin: 25px;
@@ -70,43 +79,74 @@
 .menu {
     height: 30px;
     width: 100px;
-    position: absolute;
-    left: 50px;
-    bottom: 4px;
+    position: relative;
+    left: 0px;
+    bottom: 10px;
     text-align: center;
+    cursor: pointer;
 }
 
 .show-menu {
-    display: inline-block;
     line-height: 30px;
-}
-
-.menu-links {
-    max-width: 420px;
-    position: relative;
-    left: 50px;
-    opacity: 0;
-    height: 0;
-    /*top: 30px;*/
-    transition: all 1.5s ease-in-out;
 }
 
 .nav-menu {
     position: relative;
-    bottom: 27px;
+    bottom: 35px;
+}
+
+@media only screen and (max-width: 720px) {
+    .nav-menu {
+        bottom: -15px;
+    }
+
+    .menu {
+        border: 2px dashed rgb(51, 37, 50);
+    }
+    
+    @media only screen and (max-width: 580px) {
+
+        .menu {
+            width: 35px;
+            bottom: 22px;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu::before {
+            content: "\2630";
+        }
+
+        .menu span {
+            display: none;
+        }
+    }
 }
 
 .nav-menu ul li {
-    display: inline-block;
-    width: 100px;
+    display: block;
+    width: 120px;
     line-height: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    background: rgb(164, 154, 135);
+    border: 2px dashed rgb(51, 37, 50);
 }
 
-.show-menu:hover + ul,
-.menu-links:hover {
-    top: 30px;
+.menu-links {
+    max-width: 120px;
+    position: relative;
+    opacity: 0;
+    left: -500px;
+    margin-top: 0;
+    padding: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.show-menu:hover + ul, .menu-links:hover {
+    left: 0;
     opacity: 1;
-    height: 30px;
+    visibility: visible;
 }
 
 a, a:visited {
