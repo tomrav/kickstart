@@ -1,26 +1,110 @@
+
+/*
+
+    ###  COLORS  ###
+    darkblue: rgb(34, 83, 120)
+    mediumblue: rgb(22, 149, 163)
+    lightblue: rgb(172, 240, 242)
+    paleblue: rgb(243, 255, 226)
+    orange: rgb(235, 127, 0)
+
+*/
+
+
+
 body {
-    background: gainsboro;
+    background: rgb(243, 255, 226);
 }
 
-table {
+main {
     margin: 0 auto;
-    width: 600px;
+    width: 900px;
+}
 
+td {
+    padding: 10px;
+}
+
+.tableHead {
+    height: 50px;
+    background: rgb(34, 83, 120);
+    font-weight: bold;
+    color: rgb(235, 127, 0);
+}
+
+.tableHead tr {
+    height: 50px;
+    margin: 10px;
+}
+
+.tableHead tr th {
+    padding: 5px;
+    border: 2px solid rgb(22, 149, 163);
+}
+
+.tableBody tr:nth-child(odd) {
+    background: rgb(22, 149, 163);
+    color: rgb(172, 240, 242)
+}
+
+.tableBody tr:nth-child(even) {
+    background: rgb(172, 240, 242);
+    color: rgb(34, 83, 120);
 }
 
 h1 {
     text-align: center;
+    color: rgb(34, 83, 120);
 }
 
 td {
-    border: 1px solid black;
-}
-
-.tableHead {
-    background: mediumpurple;
-    font-weight: bold;
+    border: 1px solid rgb(34, 83, 120);
 }
 
 .tableBody {
     text-align: center;
+}
+
+.tablePagination {
+    float: right;
+    display: inline-block;
+    margin: 5px;
+}
+
+.positionPaging {
+    margin: 0 auto;
+}
+
+button {
+    -webkit-border-radius: 9;
+    -moz-border-radius: 9;
+    border-radius: 9px;
+    font-family: Arial, sans-serif;
+    color: rgb(235, 127, 0);
+    font-size: 16px;
+    background: rgb(34, 83, 120);
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+
+}
+
+button:hover {
+    background: #EB7F00;
+    color: rgb(34, 83, 120);
+    text-decoration: none;
+}
+
+button:active,
+button:focus,
+button.active {
+    background-image: none;
+    /*outline: 0;*/
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
 }
