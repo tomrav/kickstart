@@ -1,4 +1,4 @@
-var itemsRange = 0;
+var products = {};
 var productsPerPage = 10;
 
 function getTableHeaders() {
@@ -89,6 +89,7 @@ function getPaginatedProducts(index) {
 }
 
 function init() {
+    products = DataGenerator.generateItems(35);
     document.addEventListener('changePage', generateTable);
     generateTable();
     createPaginationButtons();
