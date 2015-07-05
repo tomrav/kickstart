@@ -9,30 +9,42 @@
     <title>THIS IS STUFF</title>
 </head>
 <body>
-<h1>
-    HELL-O-DOM
-</h1>
 <main>
-    <table>
-        <thead id="tableHeader" class="tableHead">
-            <tr>
-                <th name="id">Index</th>
-                <th name="image">Image</th>
-                <th name="name">Name</th>
-                <th name="description">Description</th>
-                <th name="price">Price</th>
-                <th name="limit">Limit</th>
-                <th name="addToCart">Add to Cart</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody" class="tableBody">
+    <h1 class="page-title">
+        HELL-O-DOM
+    </h1>
+    <div class="table-container">
+        <header id="tableHeader" class="table-header">
+            <div name="id" class="cell">
+                <p>Index</p>
+            </div>
+            <div name="image" class="cell">
+                <p>Image</p>
+            </div>
+            <div name="name" class="cell">
+                <p>Name</p>
+            </div>
+            <div name="description" class="cell">
+                <p>Description</p>
+            </div>
+            <div name="price" class="cell">
+                <p>Price</p>
+            </div>
+            <div name="limit" class="cell">
+                <p>Limit</p>
+            </div>
+            <div name="addToCart" class="cell">
+                <p>Add to Cart</p>
+            </div>
+        </header>
+        <!--<div id="tableBody" class="table-body">-->
 
-        </tbody>
-    </table>
+        <!--</div>-->
+    </div>
     <div class="positionPaging">
-        <div id="tablePagination" class="tablePagination clearfix">
+        <ul id="tablePagination" class="tablePagination clearfix">
 
-        </div>
+        </ul>
     </div>
     <div class="cart">
         <h2>à la carte</h2>
@@ -40,8 +52,10 @@
 </main>
 
 <!--<script src="scripts/Items.js" type="text/javascript"></script>-->
-<script src="scripts/Products.js" type="text/javascript"></script>
+<script src="scripts/ProductsList.js" type="text/javascript"></script>
 <script src="scripts/EventManager.js" type="text/javascript"></script>
-<script src="scripts/Logic.js" type="text/javascript"></script>
+<script src="scripts/helpers/DomHelper.js" type="text/javascript"></script>
+<script src="scripts/Cart.js" type="text/javascript"></script>
+<script src="scripts/Table.js" type="text/javascript"></script>
 </body>
 </html>

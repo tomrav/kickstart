@@ -1,0 +1,45 @@
+
+/*
+
+    ###  COLORS  ###
+    darkblue: rgb(34, 83, 120)
+    mediumblue: rgb(22, 149, 163)
+    lightblue: rgb(172, 240, 242)
+    paleblue: rgb(243, 255, 226)
+    orange: rgb(235, 127, 0)
+
+*/
+
+body {
+    background: rgb(243, 255, 226);
+}
+
+.page-title {
+    color: rgb(34, 83, 120);
+}
+
+
+/*  TABLE  */
+
+.tableHead {
+    color: rgb(235, 127, 0);
+}
+
+.tableHead tr th {
+    border: 2px solid rgb(22, 149, 163);
+}
+
+.tableBody tr:nth-child(odd) {
+    background: rgb(22, 149, 163);
+    color: rgb(172, 240, 242)
+}
+
+.tableBody tr:nth-child(even) {
+    background: rgb(172, 240, 242);
+    color: rgb(34, 83, 120);
+}
+
+.tableBody td {
+    border: 1px solid rgb(34, 83, 120);
+}
+

@@ -18,19 +18,20 @@ var EventManager = {
     counter: 0,
 
     addEventType: function(type) {
-        if (this.eventStore.type) {
-            // return if already exists
+        if (!this.eventStore.type) {
+            this.eventStore.type = [];
+            return 'event type created';
         } else {
-            // create new type
+            return 'event type already exists';
         }
 
     },
 
     removeEventType: function(type) {
         if (this.eventStore.type) {
-            // delete if exists
+            this.eventStore.type = undefined;
         } else {
-            // event type does not exist.
+            return 'event type does not exist';
         }
     },
 

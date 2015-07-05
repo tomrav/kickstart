@@ -1,4 +1,3 @@
-
 /*
 
     ###  COLORS  ###
@@ -10,65 +9,48 @@
 
 */
 
-
-
-body {
-    background: rgb(243, 255, 226);
-}
-
 main {
     margin: 0 auto;
     width: 900px;
 }
 
-td {
-    padding: 10px;
-}
-
-.tableHead {
-    height: 50px;
-    background: rgb(34, 83, 120);
-    font-weight: bold;
-    color: rgb(235, 127, 0);
-}
-
-.tableHead tr {
-    height: 50px;
-    margin: 10px;
-}
-
-.tableHead tr th {
-    padding: 5px;
-    border: 2px solid rgb(22, 149, 163);
-}
-
-.tableBody tr:nth-child(odd) {
-    background: rgb(22, 149, 163);
-    color: rgb(172, 240, 242)
-}
-
-.tableBody tr:nth-child(even) {
-    background: rgb(172, 240, 242);
-    color: rgb(34, 83, 120);
-}
-
-h1 {
+.page-title {
     text-align: center;
-    color: rgb(34, 83, 120);
 }
 
-td {
-    border: 1px solid rgb(34, 83, 120);
+/*  TABLE  */
+
+.table-container {
+    display: table;
 }
 
-.tableBody {
+.table-header {
+    display: table-row;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.cell {
     text-align: center;
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .tablePagination {
     float: right;
-    display: inline-block;
     margin: 5px;
+}
+
+.tablePagination li {
+    display: inline-block;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
 }
 
 .positionPaging {
@@ -108,3 +90,32 @@ button.active {
     display: block;
     clear: both;
 }
+
+
+
+/*td {*/
+/*padding: 10px;*/
+/*}*/
+
+/*.tableHead {*/
+/*height: 50px;*/
+/*background: rgb(34, 83, 120);*/
+/*font-weight: bold;*/
+/*}*/
+
+/*.tableHead tr {*/
+/*height: 50px;*/
+/*margin: 10px;*/
+/*}*/
+
+/*.tableHead tr th {*/
+/*padding: 5px;*/
+/*}*/
+
+/*.page-title {*/
+/*text-align: center;*/
+/*}*/
+
+/*.tableBody {*/
+/*text-align: center;*/
+/*}*/
