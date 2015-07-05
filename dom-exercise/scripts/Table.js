@@ -17,14 +17,17 @@ function createTableRow(headers, rowData) {
     for (var i = 0; i < headers.length; i++) {
         var cell = document.createElement('div');
         DomHelper.addClasses(cell, 'cell');
-        if (headers[i] === 'image') {
-            var img = createImage(rowData['image']);
-            cell.appendChild(img);
-        } else if (headers[i] === 'addToCart'){
-            var button = createButton(Cart.add, 'Add to Cart');
-            cell.appendChild(button);
-        } else {
-            cell.textContent = rowData[headers[i]];
+        switch (headers[i]) {
+            case 'image':
+                var img = createImage(rowData['image']);
+                cell.appendChild(img);
+                break;
+            case 'addToCart':
+                var button = createButton(Cart.add, 'Add to Cart');
+                cell.appendChild(button);
+                break;
+            default:
+                cell.textContent = rowData[headers[i]];
         }
         row.appendChild(cell);
     }
@@ -48,9 +51,8 @@ function generateTable(event) {
     event = event || window.event;
     var tableIndex = +event.detail || 0;
     var tableBody = document.querySelector('.table-container');
-    debugger;
-    while (event.type === 'click' && tableBody.firstChild) {
-        tableBody.removeChild(tableBody.firstChild);
+    while (event.type === 'changePage' && tableBody.children.length > 1) {
+        tableBody.children[1].remove();
     }
     var arrayOfHeaders = getTableHeaders();
     var tableFragment = document.createDocumentFragment();
