@@ -5,7 +5,7 @@ var DomHelper = {
         if (typeof classes === 'string') {
             element.classList.add(classes);
         } else if (Array.isArray(classes)) {
-            classList.forEach(function (value, index, array) {
+            classes.forEach(function (value) {
                 element.classList.add(value);
             })
         }
@@ -13,5 +13,9 @@ var DomHelper = {
 
     insertAfter: function (newNode, referenceNode) {
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    },
+
+    removeElement: function (referenceNode) {
+        referenceNode.parentElement.removeChild(referenceNode);
     }
 };

@@ -5,45 +5,67 @@ var tableHeaders = ItemHeaders;
 function addToCartProxy(event) {
     event = event || window.event;
     var id = event.target.parentElement.parentElement.firstChild.textContent;
-    var itemData = products.filter(function(element) {
+    var itemData = products.filter(function (element) {
         return element.id === id;
     });
     if (Array.isArray(itemData) && itemData.length === 1) {
         itemData = itemData[0];
         EventManager.publish('addToCart', itemData);
-    } else {
-        console.log('Something went wrong.');
     }
 }
 
 function generateTable(event) {
-    var paginatedProducts = getPaginatedProducts(0);
+    event = event || window.event;
+    var pageIndex = 0;
+    if (event.type === 'changePage') {
+        pageIndex = event.detail;
+        removeTable();
+    } else if (event.type === 'change') {
+        removeTable();
+    }
+    var paginatedProducts = getPaginatedProducts(pageIndex);
     var table = Painter.createTable(paginatedProducts, tableHeaders, 'table');
     var tablePlacement = document.querySelector('h1');
     DomHelper.insertAfter(table, tablePlacement);
 }
 
+function removeTable() {
+    var tableContainer = document.querySelector('.table-container');
+    DomHelper.removeElement(tableContainer);
+}
+
 function createPaginationButtons() {
     var numOfPages = Math.ceil(products.length / productsPerPageInput.value);
+    var itemsPerPageLabel = document.querySelector('#itemsPerPageLabel');
     var tablePagination = document.querySelector('#tablePagination');
+    if (tablePagination) {
+        DomHelper.removeElement(tablePagination);
+    }
+    tablePagination = document.createElement('ul');
+    tablePagination.id = 'tablePagination';
+    DomHelper.addClasses(tablePagination, ['tablePagination', 'clearfix']);
+    DomHelper.insertAfter(tablePagination, itemsPerPageLabel);
     for (var i = 1; i < numOfPages + 1; i++) {
-        var pageButton = document.createElement('li');
-        pageButton.textContent = i;
+        var pageItem = document.createElement('li');
+        pageItem.textContent = i;
         // -1 for the correct pagination index
-        pageButton.setAttribute('data-index', i - 1);
-        pageButton.addEventListener('click', fireCustomEvent);
-        tablePagination.appendChild(pageButton);
+        pageItem.setAttribute('data-index', i - 1);
+        pageItem.addEventListener('click', fireCustomEvent);
+        tablePagination.appendChild(pageItem);
     }
 }
 
 function getPaginatedProducts(index) {
-    return products.slice(index * productsPerPageInput.value, index * productsPerPageInput.value + 10);
+    var productsPerPage = productsPerPageInput.value;
+    return products.slice(index * productsPerPage, (index * productsPerPage) + productsPerPage);
 }
 
-function updatePagination(event) {
-    generateTable(0);
+function updatePageSize(event) {
+    if (event.target.value < 1) {
+        event.target.value = 1;
+    }
+    generateTable(event);
     createPaginationButtons();
-    console.log(event.target.value);
 }
 
 function fireCustomEvent(event) {
@@ -59,9 +81,9 @@ function init() {
     createPaginationButtons();
 }
 
-productsPerPageInput.addEventListener('change', updatePagination);
+productsPerPageInput.addEventListener('change', updatePageSize);
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     init();
     Cart.init();
 });
