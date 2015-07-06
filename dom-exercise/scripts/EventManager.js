@@ -36,7 +36,7 @@ var EventManager = {
     },
 
     subscribe: function (evtType, cb) {
-        if (this.eventStore[type]) {
+        if (this.eventStore[evtType]) {
             this.counter++;
             this.eventStore[evtType].push({
                 id: this.counter,
