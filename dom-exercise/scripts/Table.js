@@ -1,72 +1,30 @@
-var products = {};
-var productsPerPage = 10;
+var products = [];
+var productsPerPageInput = document.querySelector('#itemsPerPage');
+var tableHeaders = ItemHeaders;
 
-function getTableHeaders() {
-    var tableHeader = document.querySelector('#tableHeader');
-    var arrayOfHeaders = [];
-    for (var i = 0; i < tableHeader.children.length; i++) {
-        arrayOfHeaders.push(tableHeader.children[i].attributes['name'].value);
+function addToCartProxy(event) {
+    event = event || window.event;
+    var id = event.target.parentElement.parentElement.firstChild.textContent;
+    var itemData = products.filter(function(element) {
+        return element.id === id;
+    });
+    if (Array.isArray(itemData) && itemData.length === 1) {
+        itemData = itemData[0];
+        EventManager.publish('addToCart', itemData);
+    } else {
+        console.log('Something went wrong.');
     }
-
-    return arrayOfHeaders;
-}
-
-function createTableRow(headers, rowData) {
-    var row = document.createElement('div');
-    DomHelper.addClasses(row, 'table-row');
-    for (var i = 0; i < headers.length; i++) {
-        var cell = document.createElement('div');
-        DomHelper.addClasses(cell, 'cell');
-        switch (headers[i]) {
-            case 'image':
-                var img = createImage(rowData['image']);
-                cell.appendChild(img);
-                break;
-            case 'addToCart':
-                var button = createButton(Cart.add, 'Add to Cart');
-                cell.appendChild(button);
-                break;
-            default:
-                cell.textContent = rowData[headers[i]];
-        }
-        row.appendChild(cell);
-    }
-    return row;
-}
-
-function createImage(src) {
-    var img = document.createElement('img');
-    img.setAttribute('src', src);
-    return img;
-}
-
-function createButton(cb, text) {
-    var button = document.createElement('button');
-    button.addEventListener('click', cb, false);
-    button.innerText = text;
-    return button;
 }
 
 function generateTable(event) {
-    event = event || window.event;
-    var tableIndex = +event.detail || 0;
-    var tableBody = document.querySelector('.table-container');
-    while (event.type === 'changePage' && tableBody.children.length > 1) {
-        tableBody.children[1].remove();
-    }
-    var arrayOfHeaders = getTableHeaders();
-    var tableFragment = document.createDocumentFragment();
-    var paginatedProducts = getPaginatedProducts(tableIndex);
-    paginatedProducts.forEach(function (value, index, array) {
-        tableFragment.appendChild(createTableRow(arrayOfHeaders, value, index, array.length));
-        if (index === paginatedProducts.length - 1) {
-            tableBody.appendChild(tableFragment);
-        }
-    });
+    var paginatedProducts = getPaginatedProducts(0);
+    var table = Painter.createTable(paginatedProducts, tableHeaders, 'table');
+    var tablePlacement = document.querySelector('h1');
+    DomHelper.insertAfter(table, tablePlacement);
 }
 
 function createPaginationButtons() {
-    var numOfPages = Math.ceil(products.length / productsPerPage);
+    var numOfPages = Math.ceil(products.length / productsPerPageInput.value);
     var tablePagination = document.querySelector('#tablePagination');
     for (var i = 1; i < numOfPages + 1; i++) {
         var pageButton = document.createElement('li');
@@ -78,14 +36,20 @@ function createPaginationButtons() {
     }
 }
 
+function getPaginatedProducts(index) {
+    return products.slice(index * productsPerPageInput.value, index * productsPerPageInput.value + 10);
+}
+
+function updatePagination(event) {
+    generateTable(0);
+    createPaginationButtons();
+    console.log(event.target.value);
+}
+
 function fireCustomEvent(event) {
     var index = event.target.dataset.index;
     var customEvent = new CustomEvent('changePage', {detail: index});
     document.dispatchEvent(customEvent);
-}
-
-function getPaginatedProducts(index) {
-    return products.slice(index * productsPerPage, index * productsPerPage + 10);
 }
 
 function init() {
@@ -95,6 +59,9 @@ function init() {
     createPaginationButtons();
 }
 
+productsPerPageInput.addEventListener('change', updatePagination);
+
 document.addEventListener("DOMContentLoaded", function(event) {
     init();
+    Cart.init();
 });

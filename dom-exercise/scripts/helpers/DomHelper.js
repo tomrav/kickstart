@@ -4,14 +4,18 @@ var DomHelper = {
         return document.createElement(tagName);
     },
 
-    addClasses: function (element, items) {
+    addClasses: function (element, classes) {
         // first case for single class, second for array of classes
-        if (typeof items === 'string') {
-            element.classList.add(items);
-        } else if (Object.prototype.toString.call(items) === '[object Array]') {
+        if (typeof classes === 'string') {
+            element.classList.add(classes);
+        } else if (Array.isArray(classes)) {
             classList.forEach(function (value, index, array) {
                 element.classList.add(value);
             })
         }
+    },
+
+    insertAfter: function (newNode, referenceNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
 };

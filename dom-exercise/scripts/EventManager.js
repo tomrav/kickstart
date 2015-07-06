@@ -11,61 +11,56 @@
 //  ##############################
 //
 
+//  Event Types:
+
+//  * addToCart
+//  * removeFromCart
+
+
 var EventManager = {
 
     eventStore: {},
 
     counter: 0,
 
-    addEventType: function(type) {
-        if (!this.eventStore.type) {
-            this.eventStore.type = [];
-            return 'event type created';
-        } else {
-            return 'event type already exists';
+    addEventType: function (type) {
+        if (!this.eventStore[type]) {
+            this.eventStore[type] = [];
         }
-
     },
 
-    removeEventType: function(type) {
-        if (this.eventStore.type) {
-            this.eventStore.type = undefined;
-        } else {
-            return 'event type does not exist';
+    removeEventType: function (type) {
+        if (this.eventStore[type]) {
+            this.eventStore[type] = undefined;
         }
     },
 
     subscribe: function (evtType, cb) {
+        if (this.eventStore[type]) {
+            this.counter++;
+            this.eventStore[evtType].push({
+                id: this.counter,
+                cb: cb
+            });
 
-        this.eventStore.evtType = evtType;
-        this.counter++;
-        this.eventStore.evtType.push({
-            id: this.counter,
-            cb: cb
-        });
-
-        return this.counter;
+            return this.counter;
+        }
     },
 
     publish: function (evtType, payload) {
-
-        if (this.eventStore.evtType) {
-            this.eventStore.evtType.forEach(function (value, index, array) {
+        if (this.eventStore[evtType]) {
+            this.eventStore[evtType].forEach(function (value, index, array) {
                 value.cb(payload);
-            })
-        } else {
-            console.log('No one registered to event name: ' + evtType);
+            });
         }
     },
 
     unsubscribe: function (evtType, id) {
-
-        this.eventStore.evtType.forEach(function (value, index, array) {
+        this.eventStore[evtType].forEach(function (value, index, array) {
             if (value.id === id) {
-                eventStore.evtType[index].remove();
+                eventStore[evtType][index].remove();
             }
         })
-
     }
 
 };

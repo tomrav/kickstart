@@ -38,8 +38,7 @@ main {
     display: table-cell;
     border: solid;
     border-width: thin;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 5px;
     vertical-align: middle;
 }
 
@@ -59,7 +58,7 @@ main {
     margin: 0 auto;
 }
 
-button {
+.addToCartButton {
     -webkit-border-radius: 9;
     -moz-border-radius: 9;
     border-radius: 9px;
@@ -69,18 +68,17 @@ button {
     background: rgb(34, 83, 120);
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-
 }
 
-button:hover {
+.addToCartButton:hover {
     background: #EB7F00;
     color: rgb(34, 83, 120);
     text-decoration: none;
 }
 
-button:active,
-button:focus,
-button.active {
+.addToCartButton:active,
+.addToCartButton:focus,
+.addToCartButton.active {
     background-image: none;
     /*outline: 0;*/
     -webkit-box-shadow: none;
@@ -93,31 +91,6 @@ button.active {
     clear: both;
 }
 
-
-
-/*td {*/
-/*padding: 10px;*/
-/*}*/
-
-/*.tableHead {*/
-/*height: 50px;*/
-/*background: rgb(34, 83, 120);*/
-/*font-weight: bold;*/
-/*}*/
-
-/*.tableHead tr {*/
-/*height: 50px;*/
-/*margin: 10px;*/
-/*}*/
-
-/*.tableHead tr th {*/
-/*padding: 5px;*/
-/*}*/
-
-/*.page-title {*/
-/*text-align: center;*/
-/*}*/
-
-/*.tableBody {*/
-/*text-align: center;*/
-/*}*/
+.cart {
+    display: table;
+}
