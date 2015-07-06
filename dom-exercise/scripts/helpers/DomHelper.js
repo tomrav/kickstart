@@ -1,9 +1,5 @@
 var DomHelper = {
 
-    createElement: function (tagName) {
-        return document.createElement(tagName);
-    },
-
     addClasses: function (element, classes) {
         // first case for single class, second for array of classes
         if (typeof classes === 'string') {
