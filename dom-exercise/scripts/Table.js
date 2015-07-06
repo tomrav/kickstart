@@ -56,7 +56,8 @@ function createPaginationButtons() {
 }
 
 function getPaginatedProducts(index) {
-    var productsPerPage = productsPerPageInput.value;
+    index = parseInt(index, 10);
+    var productsPerPage = parseInt(productsPerPageInput.value, 10);
     return products.slice(index * productsPerPage, (index * productsPerPage) + productsPerPage);
 }
 
@@ -74,16 +75,9 @@ function fireCustomEvent(event) {
     document.dispatchEvent(customEvent);
 }
 
-function init() {
+function initTable() {
     products = DataGenerator.generateItems(35);
     document.addEventListener('changePage', generateTable);
     generateTable();
     createPaginationButtons();
 }
-
-productsPerPageInput.addEventListener('change', updatePageSize);
-
-document.addEventListener("DOMContentLoaded", function (event) {
-    init();
-    Cart.init();
-});
