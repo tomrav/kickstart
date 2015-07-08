@@ -1,29 +1,25 @@
-
 var Painter = {
 
-    createTable: function(dataSet, headersMap, tableType) {
+    createTable: function (dataSet, headersMap, tableType) {
         var table = document.createElement('div');
         DomHelper.addClasses(table, 'table-container');
         table.appendChild(this.createRow(headersMap, 'header'));
-        dataSet.forEach(function(val) {
+        dataSet.forEach(function (val) {
             table.appendChild(this.createRow(val, tableType));
         }.bind(this));
 
         return table;
     },
 
-    createRow: function(dataItem, rowType) {
+    createRow: function (dataItem, rowType) {
         var row = document.createElement('div');
-        if (rowType === 'header') {
-            DomHelper.addClasses(row, 'table-header');
-        } else {
-            DomHelper.addClasses(row, 'table-row');
-        }
+        rowType = rowType || 'row';
+        DomHelper.addClasses(row, 'table-' + rowType);
         for (key in dataItem) {
             // TODO: add check for keys with hasOwnProperty
             row.appendChild(this.createCell(key, dataItem[key]));
         }
-        if (rowType === 'table') {
+        if (rowType === 'row') {
             row.appendChild(this.createCell('addToCart'));
         } else if (rowType === 'cart') {
 
@@ -32,26 +28,36 @@ var Painter = {
         return row;
     },
 
-    createCell: function(key, value) {
+    createCell: function (key, value) {
         var cell = document.createElement('div');
+        var child;
         DomHelper.addClasses(cell, 'cell');
         switch (key) {
             case 'image':
-                var img = document.createElement('img');
-                img.setAttribute('src', value);
-                cell.appendChild(img);
+                child = Painter.createImg(child, value);
                 break;
             case 'addToCart':
-                var button = document.createElement('button');
-                DomHelper.addClasses(button, 'addToCartButton');
-                button.addEventListener('click', addToCartProxy, false);
-                button.innerText = 'Add to Cart';
-                cell.appendChild(button);
+                child = Painter.createButton(child, 'Add to Cart', 'addToCartButton');
                 break;
             default:
-                cell.textContent = value;
+                child = document.createTextNode(value);
+                //cell.textContent = value;
         }
-
+        cell.appendChild(child);
         return cell;
+    },
+
+    createButton: function (button, text, classes) {
+        button = document.createElement('button');
+        DomHelper.addClasses(button, classes);
+        button.addEventListener('click', addToCartProxy, false);
+        button.innerText = text;
+        return button;
+    },
+
+    createImg: function (child, src) {
+        child = document.createElement('img');
+        child.setAttribute('src', src);
+        return child;
     }
 };

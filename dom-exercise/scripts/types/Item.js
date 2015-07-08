@@ -10,6 +10,14 @@ function Item() {
     
 }
 
+function ExtendedItem() {
+    this.props = {
+    }
+}
+
+ExtendedItem.prototype = new Item();
+ExtendedItem.prototype.constructor = ExtendedItem;
+
 ItemHeaders = {
     id : 'ID',
     img : 'Image',

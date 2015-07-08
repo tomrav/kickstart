@@ -16,6 +16,6 @@ var DomHelper = {
     },
 
     removeElement: function (referenceNode) {
-        referenceNode.parentElement.removeChild(referenceNode);
+        referenceNode && referenceNode.parentElement && referenceNode.parentElement.removeChild(referenceNode);
     }
 };

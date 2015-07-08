@@ -23,8 +23,8 @@ function generateTable(event) {
     } else if (event.type === 'change') {
         removeTable();
     }
-    var paginatedProducts = getPaginatedProducts(pageIndex);
-    var table = Painter.createTable(paginatedProducts, tableHeaders, 'table');
+    var paginatedProducts = Pagination.getPaginatedProducts(pageIndex);
+    var table = Painter.createTable(paginatedProducts, tableHeaders);
     var tablePlacement = document.querySelector('h1');
     DomHelper.insertAfter(table, tablePlacement);
 }
@@ -34,50 +34,7 @@ function removeTable() {
     DomHelper.removeElement(tableContainer);
 }
 
-function createPaginationButtons() {
-    var numOfPages = Math.ceil(products.length / productsPerPageInput.value);
-    var itemsPerPageLabel = document.querySelector('#itemsPerPageLabel');
-    var tablePagination = document.querySelector('#tablePagination');
-    if (tablePagination) {
-        DomHelper.removeElement(tablePagination);
-    }
-    tablePagination = document.createElement('ul');
-    tablePagination.id = 'tablePagination';
-    DomHelper.addClasses(tablePagination, ['tablePagination', 'clearfix']);
-    DomHelper.insertAfter(tablePagination, itemsPerPageLabel);
-    for (var i = 1; i < numOfPages + 1; i++) {
-        var pageItem = document.createElement('li');
-        pageItem.textContent = i;
-        // -1 for the correct pagination index
-        pageItem.setAttribute('data-index', i - 1);
-        pageItem.addEventListener('click', fireCustomEvent);
-        tablePagination.appendChild(pageItem);
-    }
-}
-
-function getPaginatedProducts(index) {
-    index = parseInt(index, 10);
-    var productsPerPage = parseInt(productsPerPageInput.value, 10);
-    return products.slice(index * productsPerPage, (index * productsPerPage) + productsPerPage);
-}
-
-function updatePageSize(event) {
-    if (event.target.value < 1) {
-        event.target.value = 1;
-    }
-    generateTable(event);
-    createPaginationButtons();
-}
-
-function fireCustomEvent(event) {
-    var index = event.target.dataset.index;
-    var customEvent = new CustomEvent('changePage', {detail: index});
-    document.dispatchEvent(customEvent);
-}
-
 function initTable() {
-    products = DataGenerator.generateItems(35);
     document.addEventListener('changePage', generateTable);
     generateTable();
-    createPaginationButtons();
 }

@@ -57,3 +57,7 @@ var Cart = {
         this.cartElement = document.querySelector('.cart');
     }
 };
+
+var CartHeaders = {
+
+};

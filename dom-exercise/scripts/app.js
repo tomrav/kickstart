@@ -1,7 +1,8 @@
 
 var init = function() {
-    productsPerPageInput.addEventListener('change', updatePageSize);
     document.addEventListener("DOMContentLoaded", function (event) {
+        products = DataGenerator.generateItems(35);
+        Pagination.init();
         initTable();
         Cart.init();
     });
