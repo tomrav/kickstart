@@ -31,8 +31,19 @@
     font-weight: bold;
 }
 
+.table-header > div {
+    cursor: pointer;
+}
+
 .table-row {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     display: table-row;
+}
+
+.table-header:first-child > .cell {
+    border-bottom: 0;
 }
 
 .cell {

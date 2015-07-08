@@ -3,6 +3,7 @@ var Painter = {
     createTable: function (dataSet, headersMap, tableType) {
         var table = document.createElement('div');
         DomHelper.addClasses(table, 'table-container');
+        table.id = tableType;
         table.appendChild(this.createRow(headersMap, 'header'));
         dataSet.forEach(function (val) {
             table.appendChild(this.createRow(val, tableType));
@@ -13,22 +14,21 @@ var Painter = {
 
     createRow: function (dataItem, rowType) {
         var row = document.createElement('div');
-        rowType = rowType || 'row';
-        DomHelper.addClasses(row, 'table-' + rowType);
+        var rowClass = (rowType === 'header') ? 'table-header' : 'table-row';
+        DomHelper.addClasses(row, rowClass);
         for (key in dataItem) {
             // TODO: add check for keys with hasOwnProperty
-            row.appendChild(this.createCell(key, dataItem[key]));
+            row.appendChild(this.createCell(key, dataItem[key], rowType));
         }
-        if (rowType === 'row') {
+        if (rowType === 'shop') {
             row.appendChild(this.createCell('addToCart'));
-        } else if (rowType === 'cart') {
-
         }
 
         return row;
     },
 
-    createCell: function (key, value) {
+    createCell: function (key, value, header) {
+        header = header || false;
         var cell = document.createElement('div');
         var child;
         DomHelper.addClasses(cell, 'cell');
@@ -41,6 +41,9 @@ var Painter = {
                 break;
             default:
                 child = document.createTextNode(value);
+        }
+        if (header === 'header') {
+            cell.addEventListener('click', Painter.sortEventProxy);
         }
         cell.appendChild(child);
         return cell;
@@ -59,5 +62,17 @@ var Painter = {
         DomHelper.addClasses(child, 'thumbnail-image');
         child.setAttribute('src', src);
         return child;
+    },
+
+    sortEventProxy: function (event) {
+        event = event || window.event;
+        console.dir(event.target);
+        eventName = 'sort-' + event.target.parentElement.parentElement.id;
+        EventManager.publish(eventName, event);
+    },
+
+    init: function () {
     }
 };
+
+Painter.init();

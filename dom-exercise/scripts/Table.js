@@ -19,7 +19,7 @@ function generateTable(event) {
     var pageIndex = event.type === 'changePage' ? event.detail : 0;
     removeTable();
     var paginatedProducts = Pagination.getPaginatedProducts(pageIndex);
-    var table = Painter.createTable(paginatedProducts, tableHeaders);
+    var table = Painter.createTable(paginatedProducts, tableHeaders, 'shop');
     var tablePlacement = document.querySelector('h1');
     DomHelper.insertAfter(table, tablePlacement);
 }
@@ -29,7 +29,12 @@ function removeTable() {
     DomHelper.removeElement(tableContainer);
 }
 
+function sort() {
+}
+
 function initTable() {
     document.addEventListener('changePage', generateTable);
+    EventManager.addEventType('sort-shop');
+    EventManager.subscribe('sort-shop', sort);
     generateTable();
 }

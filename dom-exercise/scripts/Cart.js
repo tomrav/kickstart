@@ -51,11 +51,16 @@ var Cart = {
         // TODO: re-calc sum total.
     },
 
+    sort: function() {
+    },
+
     init: function () {
         EventManager.addEventType('addToCart');
+        EventManager.addEventType('sort-cart');
+        EventManager.subscribe('sort-cart', Cart.sort);
         Cart.addToCartEvtId = EventManager.subscribe('addToCart', this.add.bind(this));
         Cart.cartElement = document.querySelector('.cart');
-        Cart.cartElement = Painter.createTable([], CartHeaders, 'cart')
+        Cart.cartElement = Painter.createTable([], CartHeaders, 'cart');
         DomHelper.insertAfter(Cart.cartElement, document.getElementById('cart-title'));
     }
 };
