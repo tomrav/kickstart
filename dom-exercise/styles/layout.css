@@ -9,9 +9,10 @@
 
 */
 
-main {
+.main-section {
     margin: 0 auto;
     width: 900px;
+    padding: 20px;
 }
 
 .page-title {
@@ -21,6 +22,7 @@ main {
 /*  TABLE  */
 
 .table-container {
+    width: 100%;
     display: table;
 }
 
@@ -36,8 +38,7 @@ main {
 .cell {
     text-align: center;
     display: table-cell;
-    border: solid;
-    border-width: thin;
+    border: 1px solid;
     padding: 5px;
     vertical-align: middle;
 }
@@ -96,6 +97,8 @@ main {
     clear: both;
 }
 
-.cart {
+.cart-container {
     display: table;
+    width: 100%;
+    margin: 25px 0;
 }

@@ -10,36 +10,32 @@
 
 */
 
-body {
-    background: rgb(243, 255, 226);
+.body-background {
+    background: rgb(34, 83, 120);
 }
 
 .page-title {
     color: rgb(34, 83, 120);
 }
 
+.main-background {
+    background: rgb(172, 240, 242);
+}
 
 /*  TABLE  */
 
-.tableHead {
-    color: rgb(235, 127, 0);
+.table-header > div {
+    background: rgb(34, 83, 120);
+    color: rgb(243, 255, 226);
 }
 
-.tableHead tr th {
-    border: 2px solid rgb(22, 149, 163);
-}
-
-.tableBody tr:nth-child(odd) {
-    background: rgb(22, 149, 163);
-    color: rgb(172, 240, 242)
-}
-
-.tableBody tr:nth-child(even) {
+.table-row:nth-child(even) {
     background: rgb(172, 240, 242);
     color: rgb(34, 83, 120);
 }
 
-.tableBody td {
-    border: 1px solid rgb(34, 83, 120);
+.table-row:nth-child(odd) {
+    background: rgb(243, 255, 226);
+    color: rgb(34, 83, 120);
 }
 

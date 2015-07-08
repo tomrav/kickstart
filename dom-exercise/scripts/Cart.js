@@ -53,11 +53,18 @@ var Cart = {
 
     init: function () {
         EventManager.addEventType('addToCart');
-        this.addToCartEvtId = EventManager.subscribe('addToCart', this.add.bind(this));
-        this.cartElement = document.querySelector('.cart');
+        Cart.addToCartEvtId = EventManager.subscribe('addToCart', this.add.bind(this));
+        Cart.cartElement = document.querySelector('.cart');
+        Cart.cartElement = Painter.createTable([], CartHeaders, 'cart')
+        DomHelper.insertAfter(Cart.cartElement, document.getElementById('cart-title'));
     }
 };
 
 var CartHeaders = {
-
+    id: 'ID',
+    name: 'Name',
+    img: 'Image',
+    note: 'Note',
+    quantity: 'Quantity',
+    price: 'Price'
 };
