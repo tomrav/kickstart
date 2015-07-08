@@ -16,13 +16,8 @@ function addToCartProxy(event) {
 
 function generateTable(event) {
     event = event || window.event;
-    var pageIndex = 0;
-    if (event.type === 'changePage') {
-        pageIndex = event.detail;
-        removeTable();
-    } else if (event.type === 'change') {
-        removeTable();
-    }
+    var pageIndex = event.type === 'changePage' ? event.detail : 0;
+    removeTable();
     var paginatedProducts = Pagination.getPaginatedProducts(pageIndex);
     var table = Painter.createTable(paginatedProducts, tableHeaders);
     var tablePlacement = document.querySelector('h1');

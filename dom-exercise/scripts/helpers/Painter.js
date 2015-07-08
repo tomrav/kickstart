@@ -41,7 +41,6 @@ var Painter = {
                 break;
             default:
                 child = document.createTextNode(value);
-                //cell.textContent = value;
         }
         cell.appendChild(child);
         return cell;
@@ -57,6 +56,7 @@ var Painter = {
 
     createImg: function (child, src) {
         child = document.createElement('img');
+        DomHelper.addClasses(child, 'thumbnail-image');
         child.setAttribute('src', src);
         return child;
     }

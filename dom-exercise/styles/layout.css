@@ -42,6 +42,11 @@ main {
     vertical-align: middle;
 }
 
+.thumbnail-image {
+    min-width: 143px;
+    min-height: 143px
+}
+
 .tablePagination {
     float: right;
     margin: 5px;
