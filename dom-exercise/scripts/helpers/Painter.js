@@ -43,6 +43,7 @@ var Painter = {
                 child = document.createTextNode(value);
         }
         if (header === 'header') {
+            DomHelper.addClasses(cell, 'sort-icon');
             cell.addEventListener('click', Painter.sortEventProxy);
         }
         cell.appendChild(child);
@@ -66,7 +67,6 @@ var Painter = {
 
     sortEventProxy: function (event) {
         event = event || window.event;
-        console.dir(event.target);
         eventName = 'sort-' + event.target.parentElement.parentElement.id;
         EventManager.publish(eventName, event);
     },

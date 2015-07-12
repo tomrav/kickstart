@@ -1,6 +1,7 @@
 var products = [];
 var productsPerPageInput = document.querySelector('#itemsPerPage');
 var tableHeaders = ItemHeaders;
+var currentSort = '';
 
 function addToCartProxy(event) {
     event = event || window.event;
@@ -16,7 +17,7 @@ function addToCartProxy(event) {
 
 function generateTable(event) {
     event = event || window.event;
-    var pageIndex = event.type === 'changePage' ? event.detail : 0;
+    var pageIndex = event && event.type === 'changePage' ? event.detail : 0;
     removeTable();
     var paginatedProducts = Pagination.getPaginatedProducts(pageIndex);
     var table = Painter.createTable(paginatedProducts, tableHeaders, 'shop');
@@ -29,12 +30,37 @@ function removeTable() {
     DomHelper.removeElement(tableContainer);
 }
 
-function sort() {
+function sortTable(event) {
+    //TODO:  get sort param and compare to current sort
+    var target = event.target;
+    var sortParam = target.textContent.toLowerCase();
+    var comperator = function (a, b) {
+        if (a[sortParam] > b[sortParam]) {
+            return 1;
+        }
+        if (a[sortParam] < b[sortParam]) {
+            return -1;
+        }
+        return 0;
+    };
+    if (sortParam === currentSort) {
+        products.sort(function(a, b) {
+            currentSort = '';
+            DomHelper.removeClasses(target, 'sort-icon');
+            DomHelper.addClasses(target, 'reverse-sort-icon');
+            return (0 - comperator(a, b));
+        });
+    } else {
+        products.sort(comperator);
+        currentSort = sortParam;
+    }
+    generateTable();
+
 }
 
 function initTable() {
     document.addEventListener('changePage', generateTable);
     EventManager.addEventType('sort-shop');
-    EventManager.subscribe('sort-shop', sort);
+    EventManager.subscribe('sort-shop', sortTable);
     generateTable();
 }

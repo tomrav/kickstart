@@ -11,6 +11,16 @@ var DomHelper = (function() {
             }
         },
 
+        removeClasses: function (element, classes) {
+            if (typeof classes === 'string') {
+                element.classList.remove(classes);
+            } else if (Array.isArray(classes)) {
+                classes.forEach(function (value) {
+                    element.classList.remove(value);
+                })
+            }
+        },
+
         insertAfter: function (newNode, referenceNode) {
             referenceNode && referenceNode.parentNode && referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         },

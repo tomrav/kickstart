@@ -31,8 +31,19 @@
     font-weight: bold;
 }
 
+span.arrow { font-size:7px; text-decoration:none; position:relative; top:-1px;}
 .table-header > div {
     cursor: pointer;
+}
+
+.sort-icon:after {
+    content: '\25BE';
+    margin-left: 5px;
+}
+
+.reverse-sort-icon:after {
+    content: '\25BE';
+    margin-left: 5px;
 }
 
 .table-row {
