@@ -6,7 +6,7 @@ function Item() {
     this.name = faker.name.findName();
     this.description = faker.lorem.sentence();
     this.limit = faker.random.number({min: 1, max: 10});
-    this.price = faker.helpers.randomNumber(100);
+    this.price = '$' + faker.helpers.randomNumber(100);
     
 }
 
