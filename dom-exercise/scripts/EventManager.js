@@ -58,7 +58,7 @@ var EventManager = {
     unsubscribe: function (evtType, id) {
         this.eventStore[evtType].forEach(function (value, index, array) {
             if (value.id === id) {
-                eventStore[evtType][index].remove();
+                delete eventStore[evtType][index];
             }
         })
     }

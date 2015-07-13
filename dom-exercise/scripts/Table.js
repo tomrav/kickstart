@@ -44,12 +44,10 @@ function sortTable(event) {
         return 0;
     };
     if (sortParam === currentSort) {
-        products.sort(function(a, b) {
-            currentSort = '';
-            DomHelper.removeClasses(target, 'sort-icon');
-            DomHelper.addClasses(target, 'reverse-sort-icon');
+        products.sort(function (a, b) {
             return (0 - comperator(a, b));
         });
+        currentSort = '';
     } else {
         products.sort(comperator);
         currentSort = sortParam;

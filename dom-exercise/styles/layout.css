@@ -41,20 +41,12 @@ span.arrow { font-size:7px; text-decoration:none; position:relative; top:-1px;}
     margin-left: 5px;
 }
 
-.reverse-sort-icon:after {
-    content: '\25BE';
-    margin-left: 5px;
-}
 
 .table-row {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     display: table-row;
-}
-
-.table-header:first-child > .cell {
-    border-bottom: 0;
 }
 
 .cell {
@@ -66,8 +58,8 @@ span.arrow { font-size:7px; text-decoration:none; position:relative; top:-1px;}
 }
 
 .thumbnail-image {
-    min-width: 143px;
-    min-height: 143px
+    width: 143px;
+    height: 143px
 }
 
 .tablePagination {

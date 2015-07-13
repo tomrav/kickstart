@@ -10,11 +10,15 @@ var Cart = {
 
     cartContent: {},
 
-    add: function (itemId) {
+    addItem: function (item) {
+        itemId = item.id;
         if (this.cartContent[itemId]) {
             this.cartContent[itemId]++;
-            this.update();
+            this.updateCart();
+        } else {
+            this.cartContent[itemId] = 1;
         }
+        return this.cartContent[itemId];
 
         //console.log(item);
         //var cartItem = document.createElement('div');
@@ -39,26 +43,30 @@ var Cart = {
         //this.cartElement.appendChild(cartItem);
     },
 
-    remove: function (itemId) {
-        if (this.cartContent[itemId]) {
+    removeItem: function (itemId) {
+        if (this.cartContent[itemId] > 1) {
             this.cartContent[itemId]--;
-            this.update();
+            this.updateCart();
+        } else {
+            delete this.cartContent[itemId];
         }
+        this.updateCart();
+        return this.cartContent[itemId]
     },
 
-    update: function () {
+    updateCart: function () {
         // TODO: call for a re-render of the cart table with new content.
         // TODO: re-calc sum total.
     },
 
-    sort: function() {
+    sortCart: function() {
     },
 
     init: function () {
         EventManager.addEventType('addToCart');
         EventManager.addEventType('sort-cart');
-        EventManager.subscribe('sort-cart', Cart.sort);
-        Cart.addToCartEvtId = EventManager.subscribe('addToCart', this.add.bind(this));
+        EventManager.subscribe('sort-cart', Cart.sortCart);
+        Cart.addToCartEvtId = EventManager.subscribe('addToCart', this.addItem.bind(this));
         Cart.cartElement = document.querySelector('.cart');
         Cart.cartElement = Painter.createTable([], CartHeaders, 'cart');
         DomHelper.insertAfter(Cart.cartElement, document.getElementById('cart-title'));
