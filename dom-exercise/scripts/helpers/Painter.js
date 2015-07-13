@@ -5,10 +5,11 @@ var Painter = {
         DomHelper.addClasses(table, 'table-container');
         table.id = tableType;
         table.appendChild(this.createRow(headersMap, 'header'));
-        dataSet.forEach(function (val) {
-            table.appendChild(this.createRow(val, tableType));
-        }.bind(this));
-
+        if (JSON.stringify(dataSet) !== '{}') {
+            dataSet.forEach(function (val) {
+                table.appendChild(this.createRow(val, tableType));
+            }.bind(this));
+        }
         return table;
     },
 
@@ -50,19 +51,19 @@ var Painter = {
         return cell;
     },
 
+    createImg: function (child, src) {
+        child = document.createElement('img');
+        DomHelper.addClasses(child, 'thumbnail-image');
+        child.setAttribute('src', src);
+        return child;
+    },
+
     createButton: function (button, text, classes) {
         button = document.createElement('button');
         DomHelper.addClasses(button, classes);
         button.addEventListener('click', addToCartProxy, false);
         button.innerText = text;
         return button;
-    },
-
-    createImg: function (child, src) {
-        child = document.createElement('img');
-        DomHelper.addClasses(child, 'thumbnail-image');
-        child.setAttribute('src', src);
-        return child;
     },
 
     sortEventProxy: function (event) {

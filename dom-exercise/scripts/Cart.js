@@ -1,5 +1,7 @@
 // Cart Content
-// id - quantity
+//  id:
+//      item: item
+//      quantity: num
 
 
 var Cart = {
@@ -12,46 +14,29 @@ var Cart = {
 
     addItem: function (item) {
         itemId = item.id;
-        if (this.cartContent[itemId]) {
-            this.cartContent[itemId]++;
+        var itemInCart = this.cartContent[itemId];
+        if (itemInCart) {
+            itemInCart.quantity++;
             this.updateCart();
         } else {
-            this.cartContent[itemId] = 1;
+            this.cartContent[itemId] = {};
+            this.cartContent[itemId].quantity = 1;
+            this.cartContent[itemId].data = item;
         }
-        return this.cartContent[itemId];
 
-        //console.log(item);
-        //var cartItem = document.createElement('div');
-        //for (key in item) {
-        //    var cartCell = document.createElement('div');
-        //    DomHelper.addClasses(cartCell, 'cell');
-        //    switch (key) {
-        //        case 'image':
-        //            var img = createImage(item['image']);
-        //            cartCell.appendChild(img);
-        //            break;
-        //        case 'addToCart':
-        //            var button = createButton('Add to Cart', item);
-        //            cartCell.appendChild(button);
-        //            break;
-        //        default:
-        //            cartCell.textContent = item[key];
-        //    }
-        //    DomHelper.addClasses(cartItem, 'table-row');
-        //    cartItem.appendChild(cartCell);
-        //}
-        //this.cartElement.appendChild(cartItem);
+        return itemInCart;
     },
 
     removeItem: function (itemId) {
-        if (this.cartContent[itemId] > 1) {
-            this.cartContent[itemId]--;
+        var itemInCart = this.cartContent[itemId];
+        if (itemInCart.quantity > 1) {
+            itemInCart.quantity--;
             this.updateCart();
         } else {
-            delete this.cartContent[itemId];
+            delete itemInCart;
         }
         this.updateCart();
-        return this.cartContent[itemId]
+        return itemInCart;
     },
 
     updateCart: function () {
@@ -68,7 +53,7 @@ var Cart = {
         EventManager.subscribe('sort-cart', Cart.sortCart);
         Cart.addToCartEvtId = EventManager.subscribe('addToCart', this.addItem.bind(this));
         Cart.cartElement = document.querySelector('.cart');
-        Cart.cartElement = Painter.createTable([], CartHeaders, 'cart');
+        Cart.cartElement = Painter.createTable(this.cartContent, CartHeaders, 'cart');
         DomHelper.insertAfter(Cart.cartElement, document.getElementById('cart-title'));
     }
 };
