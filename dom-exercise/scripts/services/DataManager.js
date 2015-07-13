@@ -1,11 +1,29 @@
-
 var DataManager = {
 
     productsList: [],
 
     productsMap: {},
 
-    init: function(count) {
+    cart: window.Cart,
+
+    getCartContent: function () {
+        return Object.keys(this.cart.cartContent).map(function (value) {
+            return {
+                item: this.productsMap[value],
+                quantity: this.cart.cartContent[value]
+            };
+        }.bind(this))
+    },
+
+    sortItems: function () {
+
+    },
+
+    getItem: function (id) {
+        return this.productsMap[id];
+    },
+
+    init: function (count) {
         for (var i = 0; i < count; i++) {
             var id = faker.random.uuid(),
                 image = faker.image.avatar(),

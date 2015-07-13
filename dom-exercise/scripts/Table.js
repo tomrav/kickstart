@@ -52,7 +52,6 @@ function sortTable(event) {
         currentSort = sortParam;
     }
     generateTable();
-
 }
 
 function initTable() {

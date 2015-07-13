@@ -1,7 +1,6 @@
 // Cart Content
-//  id:
-//      item: item
-//      quantity: num
+//  id : quantity
+//
 
 
 var Cart = {
@@ -14,17 +13,11 @@ var Cart = {
 
     addItem: function (item) {
         var itemId = item.id;
-        var itemInCart = this.cartContent[itemId];
-        if (itemInCart) {
-            itemInCart.quantity++;
-            this.updateCart();
+        if (this.cartContent[itemId]) {
+            this.cartContent[itemId]++;
         } else {
-            this.cartContent[itemId] = {};
-            this.cartContent[itemId].quantity = 1;
-            this.cartContent[itemId].data = item;
+            this.cartContent[itemId] = 1;
         }
-
-        return itemInCart;
     },
 
     removeItem: function (itemId) {
