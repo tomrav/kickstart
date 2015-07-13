@@ -13,7 +13,7 @@ var Cart = {
     cartContent: {},
 
     addItem: function (item) {
-        itemId = item.id;
+        var itemId = item.id;
         var itemInCart = this.cartContent[itemId];
         if (itemInCart) {
             itemInCart.quantity++;
