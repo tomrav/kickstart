@@ -1,4 +1,3 @@
-var products = [];
 var productsPerPageInput = document.querySelector('#itemsPerPage');
 var tableHeaders = ItemHeaders;
 var currentSort = '';
@@ -6,7 +5,7 @@ var currentSort = '';
 function addToCartProxy(event) {
     event = event || window.event;
     var id = event.target.parentElement.parentElement.firstChild.textContent;
-    var itemData = products.filter(function (element) {
+    var itemData = DataManager.productsList.filter(function (element) {
         return element.id === id;
     });
     if (Array.isArray(itemData) && itemData.length === 1) {
@@ -44,12 +43,12 @@ function sortTable(event) {
         return 0;
     };
     if (sortParam === currentSort) {
-        products.sort(function (a, b) {
+        DataManager.productsList.sort(function (a, b) {
             return (0 - comperator(a, b));
         });
         currentSort = '';
     } else {
-        products.sort(comperator);
+        DataManager.productsList.sort(comperator);
         currentSort = sortParam;
     }
     generateTable();

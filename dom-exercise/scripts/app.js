@@ -1,7 +1,7 @@
 
 var init = function() {
     document.addEventListener("DOMContentLoaded", function (event) {
-        products = DataGenerator.generateItems(35);
+        DataManager.init(35);
         Pagination.init();
         initTable();
         Cart.init();

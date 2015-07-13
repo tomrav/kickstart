@@ -3,7 +3,7 @@ var itemsPerPageLabel = document.querySelector('#itemsPerPageLabel');
 var Pagination = {
 
     createPaginationButtons: function () {
-        var numOfPages = Math.ceil(products.length / productsPerPageInput.value);
+        var numOfPages = Math.ceil(DataManager.productsList.length / productsPerPageInput.value);
         var tablePagination = document.querySelector('#tablePagination');
         tablePagination && DomHelper.removeElement(tablePagination);
         tablePagination = document.createElement('ul');
@@ -23,7 +23,7 @@ var Pagination = {
     getPaginatedProducts: function (index) {
         index = parseInt(index, 10);
         var productsPerPage = parseInt(productsPerPageInput.value, 10);
-        return products.slice(index * productsPerPage, (index * productsPerPage) + productsPerPage);
+        return DataManager.productsList.slice(index * productsPerPage, (index * productsPerPage) + productsPerPage);
     },
 
     updatePageSize: function (event) {

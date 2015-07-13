@@ -1,13 +1,14 @@
 
-function Item() {
+function Item(id, image, name, description, limit, price, currency) {
 
-    this.id = faker.random.uuid();
-    this.image = faker.image.avatar();
-    this.name = faker.name.findName();
-    this.description = faker.lorem.sentence();
-    this.limit = faker.random.number({min: 1, max: 10});
-    this.price = '$' + faker.helpers.randomNumber(100);
-    
+    this.id = id;
+    this.image = image;
+    this.name = name;
+    this.description = description;
+    this.limit = limit;
+    this.price = price;
+    this.currency = currency;
+
 }
 
 function ExtendedItem() {
