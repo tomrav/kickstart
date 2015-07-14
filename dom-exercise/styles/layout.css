@@ -31,8 +31,7 @@
     font-weight: bold;
 }
 
-span.arrow { font-size:7px; text-decoration:none; position:relative; top:-1px;}
-.table-header > div {
+.sort-icon {
     cursor: pointer;
 }
 
