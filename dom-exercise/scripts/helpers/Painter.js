@@ -77,12 +77,6 @@ var Painter = {
         return button;
     },
 
-    sortEventProxy: function (event) {
-        event = event || window.event;
-        eventName = 'sort-' + event.target.parentElement.parentElement.id;
-        EventManager.publish(eventName, event);
-    },
-
     init: function () {
     }
 };

@@ -1,14 +1,14 @@
 var productsPerPageInput = document.querySelector('#itemsPerPage');
-var tableHeaders = ItemHeaders;
 var currentSort = '';
+var headerSortingOptions = ['shopHeaderName', 'shopHeaderDescription', 'shopHeaderLimit', 'shopHeaderPrice']
 
 function addToCartProxy(event) {
     event = event || window.event;
-    var id = event.target.parentElement.parentElement.firstChild.textContent;
+    var id = event.target.parentElement.parentElement.id;
     var itemData = DataManager.productsList.filter(function (element) {
         return element.id === id;
     });
-    if (Array.isArray(itemData) && itemData.length === 1) {
+    if (Array.isArray(itemData) && itemData.length > 0) {
         itemData = itemData[0];
         EventManager.publish('addToCart', itemData);
     }
@@ -24,6 +24,29 @@ function generateTable(event) {
     table.innerHTML = tableString;
     var tablePlacement = document.querySelector('h1');
     DomHelper.insertAfter(table, tablePlacement);
+    wireSortEvents();
+    wireAddToCartEvent();
+}
+
+function wireSortEvents() {
+    headerSortingOptions.forEach(function(value) {
+        var headerCell = document.querySelector('#' + value);
+        headerCell.addEventListener('click', sortEventProxy);
+    }.bind(this));
+}
+
+function sortEventProxy (event) {
+    event = event || window.event;
+    eventName = 'sort-shop';
+    EventManager.publish(eventName, event);
+}
+
+function wireAddToCartEvent() {
+    var rows = document.querySelectorAll('#shop .table-row');
+    var rowsArray = Array.prototype.slice.call(rows, 0);
+    rowsArray.forEach(function (value) {
+        value.addEventListener('click', addToCartProxy);
+    }.bind(this))
 }
 
 function removeTable() {
@@ -32,9 +55,8 @@ function removeTable() {
 }
 
 function sortTable(event) {
-    //TODO:  get sort param and compare to current sort
     var target = event.target;
-    var sortParam = target.textContent.toLowerCase();
+    var sortParam = target.textContent.toLowerCase().trim();
     var comperator = function (a, b) {
         if (a[sortParam] > b[sortParam]) {
             return 1;
