@@ -1,6 +1,6 @@
-
-<div>
-    <p>
-        hello world - shop
-    </p>
+<div class="table-container" id="shop">
+    {{> shopHeaderRow data=this rowStyle="table-header" cellStyle="cell" sortIcon="sort-icon" }}
+    {{#each this.items}}
+        {{> shopRow data=this rowStyle="table-row" cellStyle="cell" }}
+    {{/each}}
 </div>

@@ -1,16 +1,27 @@
 var Painter = {
 
-    createTable: function (dataSet, headersMap, tableType) {
-        var table = document.createElement('div');
-        DomHelper.addClasses(table, 'table-container');
-        table.id = tableType;
-        table.appendChild(this.createRow(headersMap, 'header'));
-        if (JSON.stringify(dataSet) !== '{}') {
-            dataSet.forEach(function (val) {
-                table.appendChild(this.createRow(val, tableType));
-            }.bind(this));
-        }
-        return table;
+    //createTable: function (dataSet, headersMap, tableType) {
+    createTable: function (products, tableType, headers) {
+
+
+        var tableData = {
+            items: products,
+            headers: headers
+        };
+
+        return TemplateManager.applyContextToView(tableData, tableType);
+
+
+        //var table = document.createElement('div');
+        //DomHelper.addClasses(table, 'table-container');
+        //table.id = tableType;
+        //table.appendChild(this.createRow(headersMap, 'header'));
+        //if (JSON.stringify(dataSet) !== '{}') {
+        //    dataSet.forEach(function (val) {
+        //        table.appendChild(this.createRow(val, tableType));
+        //    }.bind(this));
+        //}
+        //return table;
     },
 
     createRow: function (dataItem, rowType) {

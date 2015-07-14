@@ -1,6 +1,6 @@
 var TemplateManager = {
 
-    partialsList: ['shopRow', 'cartRow', 'shopHeaderRow', 'cartHeaderRow', 'textCell', 'imgCell', 'addToCartCell', 'cartQuantityCell'],
+    partialsList: ['shopRow', 'cartRow', 'shopHeaderRow', 'cartHeaderRow'],
 
     viewList: ['shop', 'pagination', 'cart'],
 
@@ -25,6 +25,9 @@ var TemplateManager = {
     compileView: function (name, template) {
         this.compiledViews[name] = Handlebars.compile(template);
         //TODO: fire event signaling loading of view successful
+        if (Object.keys(this.compiledViews).length === this.viewList.length) {
+            EventManager.publish('templatesLoaded');
+        }
     },
 
     getPartial: function (name) {
@@ -38,6 +41,10 @@ var TemplateManager = {
         if (numOfPartials === this.partialsList.length) {
             this.initViewLoading();
         }
+    },
+
+    applyContextToView: function (context, viewName) {
+        return this.compiledViews[viewName](context);
     },
 
     initViewLoading: function () {

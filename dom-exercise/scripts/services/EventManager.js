@@ -48,6 +48,7 @@ var EventManager = {
     },
 
     publish: function (evtType, payload) {
+        payload = payload || null;
         if (this.eventStore[evtType]) {
             this.eventStore[evtType].forEach(function (value, index, array) {
                 value.cb(payload);

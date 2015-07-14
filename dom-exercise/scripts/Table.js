@@ -19,7 +19,9 @@ function generateTable(event) {
     var pageIndex = event && event.type === 'changePage' ? event.detail : 0;
     removeTable();
     var paginatedProducts = Pagination.getPaginatedProducts(pageIndex);
-    var table = Painter.createTable(paginatedProducts, tableHeaders, 'shop');
+    var tableString = Painter.createTable(paginatedProducts, 'shop', ItemHeaders);
+    var table = document.createElement('div');
+    table.innerHTML = tableString;
     var tablePlacement = document.querySelector('h1');
     DomHelper.insertAfter(table, tablePlacement);
 }

@@ -46,8 +46,8 @@ var Cart = {
         EventManager.subscribe('sort-cart', Cart.sortCart);
         Cart.addToCartEvtId = EventManager.subscribe('addToCart', this.addItem.bind(this));
         Cart.cartElement = document.querySelector('.cart');
-        Cart.cartElement = Painter.createTable(this.cartContent, CartHeaders, 'cart');
-        DomHelper.insertAfter(Cart.cartElement, document.getElementById('cart-title'));
+        //Cart.cartElement = Painter.createTable(this.cartContent, CartHeaders, 'cart');
+        //DomHelper.insertAfter(Cart.cartElement, document.getElementById('cart-title'));
     }
 };
 
