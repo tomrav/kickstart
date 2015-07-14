@@ -20,10 +20,8 @@ function generateTable(event) {
     removeTable();
     var paginatedProducts = Pagination.getPaginatedProducts(pageIndex);
     var tableString = Painter.createTable(paginatedProducts, 'shop', ItemHeaders);
-    var table = document.createElement('div');
+    var table = document.querySelector('#shopContainer');
     table.innerHTML = tableString;
-    var tablePlacement = document.querySelector('h1');
-    DomHelper.insertAfter(table, tablePlacement);
     wireSortEvents();
     wireAddToCartEvent();
 }
@@ -50,8 +48,19 @@ function wireAddToCartEvent() {
 }
 
 function removeTable() {
-    var tableContainer = document.querySelector('.table-container');
-    DomHelper.removeElement(tableContainer);
+    var shop = document.querySelector('#shop');
+    if (shop !== null) {
+        headerSortingOptions.forEach(function (value) {
+            var cell = document.querySelector('#' + value);
+            cell.removeEventListener('click', sortEventProxy);
+        }.bind(this));
+        var rows = document.querySelectorAll('#shop .table-row');
+        var rowsArray = Array.prototype.slice.call(rows, 0);
+        rowsArray.forEach(function (value) {
+            value.removeEventListener('click', addToCartProxy);
+        }.bind(this));
+        DomHelper.removeElement(shop);
+    }
 }
 
 function sortTable(event) {
