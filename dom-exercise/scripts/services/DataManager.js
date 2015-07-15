@@ -15,8 +15,26 @@ var DataManager = {
         }.bind(this))
     },
 
-    sortItems: function () {
-
+    sortItems: function (currentSortParam, newSortParam) {
+        var comperator = function (a, b) {
+            if (a[newSortParam] > b[newSortParam]) {
+                return 1;
+            }
+            if (a[newSortParam] < b[newSortParam]) {
+                return -1;
+            }
+            return 0;
+        };
+        if (newSortParam === currentSortParam) {
+            this.productsList.sort(function (a, b) {
+                return (0 - comperator(a, b));
+            });
+            currentSortParam = '';
+        } else {
+            this.productsList.sort(comperator);
+            currentSortParam = newSortParam;
+        }
+        return currentSortParam;
     },
 
     getItem: function (id) {

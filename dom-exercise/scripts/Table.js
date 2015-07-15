@@ -73,24 +73,7 @@ function removeTable() {
 function sortTable(event) {
     var target = event.target;
     var sortParam = target.textContent.toLowerCase().trim();
-    var comperator = function (a, b) {
-        if (a[sortParam] > b[sortParam]) {
-            return 1;
-        }
-        if (a[sortParam] < b[sortParam]) {
-            return -1;
-        }
-        return 0;
-    };
-    if (sortParam === currentSort) {
-        DataManager.productsList.sort(function (a, b) {
-            return (0 - comperator(a, b));
-        });
-        currentSort = '';
-    } else {
-        DataManager.productsList.sort(comperator);
-        currentSort = sortParam;
-    }
+    currentSort = DataManager.sortItems(currentSort, sortParam);
     generateTable();
 }
 
