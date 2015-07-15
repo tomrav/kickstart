@@ -24,6 +24,10 @@ var Painter = {
         //return table;
     },
 
+    createPagination: function (numOfPagesArray) {
+        return TemplateManager.applyContextToView(numOfPagesArray, 'pagination');
+    },
+
     createRow: function (dataItem, rowType) {
         var row = document.createElement('div');
         var rowClass = (rowType === 'header') ? 'table-header' : 'table-row';

@@ -61,12 +61,12 @@
     height: 143px
 }
 
-.tablePagination {
+.table-pagination {
     float: right;
     margin: 5px;
 }
 
-.tablePagination li {
+.table-pagination li {
     display: inline-block;
     width: 30px;
     line-height: 30px;

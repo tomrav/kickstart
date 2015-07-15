@@ -1,4 +1,3 @@
-var productsPerPageInput = document.querySelector('#itemsPerPage');
 var currentSort = '';
 var headerSortingOptions = ['shopHeaderName', 'shopHeaderDescription', 'shopHeaderLimit', 'shopHeaderPrice']
 
@@ -16,12 +15,11 @@ function addToCartProxy(event) {
 
 function generateTable(event) {
     event = event || window.event;
-    var pageIndex = event && event.type === 'changePage' ? event.detail : 0;
+    var pageIndex = event && typeof event === 'number' ? event : 0;
     removeTable();
     var paginatedProducts = Pagination.getPaginatedProducts(pageIndex);
-    var tableString = Painter.createTable(paginatedProducts, 'shop', ItemHeaders);
     var table = document.querySelector('#shopContainer');
-    table.innerHTML = tableString;
+    table.innerHTML = Painter.createTable(paginatedProducts, 'shop', ItemHeaders);
     wireSortEvents();
     wireAddToCartEvent();
 }
