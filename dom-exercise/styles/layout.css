@@ -76,8 +76,18 @@
     margin: 0 3px;
 }
 
+.table-pagination li:hover {
+    background: rgb(34, 83, 120);
+    color: rgb(243, 255, 226);
+}
+
 .positionPaging {
-    margin: 0 auto;
+    margin: 10px 25px;
+    line-height: 30px;
+}
+
+.positionPaging input {
+    margin-left: 10px;
 }
 
 .addToCartButton {
