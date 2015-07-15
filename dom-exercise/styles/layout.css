@@ -57,8 +57,8 @@
 }
 
 .thumbnail-image {
-    width: 143px;
-    height: 143px
+    min-width: 100px;
+    min-height: 100px;
 }
 
 .table-pagination {
@@ -127,4 +127,22 @@
     display: table;
     width: 100%;
     margin: 25px 0;
+}
+
+.cart-total {
+    margin: 15px;
+}
+
+.price-container p {
+    margin: 3px auto 5px auto;
+    font-weight: bold;
+}
+
+.cart-container .addToCartButton {
+    display: block;
+    margin: 10px auto;
+}
+
+.right {
+    float: right;
 }

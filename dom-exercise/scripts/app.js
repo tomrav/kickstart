@@ -9,7 +9,6 @@ var app = {
 
     init: function () {
         document.addEventListener("DOMContentLoaded", function (event) {
-            EventManager.addEventType('templatesLoaded');
             EventManager.subscribe('templatesLoaded', this.templatesLoaded);
             TemplateManager.init();
         }.bind(this));

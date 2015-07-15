@@ -23,12 +23,6 @@ var EventManager = {
 
     counter: 0,
 
-    addEventType: function (type) {
-        if (!this.eventStore[type]) {
-            this.eventStore[type] = [];
-        }
-    },
-
     removeEventType: function (type) {
         if (this.eventStore[type]) {
             this.eventStore[type] = undefined;
@@ -36,15 +30,15 @@ var EventManager = {
     },
 
     subscribe: function (evtType, cb) {
-        if (this.eventStore[evtType]) {
-            this.counter++;
-            this.eventStore[evtType].push({
-                id: this.counter,
-                cb: cb
-            });
+        this.eventStore[evtType] = this.eventStore[evtType] || [];
 
-            return this.counter;
-        }
+        this.counter++;
+        this.eventStore[evtType].push({
+            id: this.counter,
+            cb: cb
+        });
+
+        return this.counter;
     },
 
     publish: function (evtType, payload) {

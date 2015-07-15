@@ -1,0 +1,35 @@
+<div class="{{rowStyle}}" id="{{this.item.id}}">
+    <div class="{{cellStyle}}">
+        {{this.item.name}}
+    </div>
+    <div class="thumbnail-container {{cellStyle}}">
+        <img src="{{this.item.image}}" class="thumbnail-image"/>
+    </div>
+    <div class="{{cellStyle}}">
+        {{this.item.description}}
+    </div>
+    <div class="{{cellStyle}}">
+        <button name="increaseButton" class="addToCartButton increase-quantity">+</button>
+        {{this.quantity}}
+        <button name="decreaseButton" class="addToCartButton decrease-quantity">-</button>
+    </div>
+    <div class="{{cellStyle}} price-container">
+        <p>
+            Item price:
+        </p>
+        <span>
+            {{this.item.currency}}{{this.item.price}}
+        </span>
+        <p>
+            Total Price:
+        </p>
+        <span>
+            {{this.item.currency}}{{itemTotal this}}
+        </span>
+    </div>
+    <div class="{{cellStyle}}">
+        <button name="removeFromCart" class="addToCartButton removeFromCart">
+            Remove from Cart
+        </button>
+    </div>
+</div>

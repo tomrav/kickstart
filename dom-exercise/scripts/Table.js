@@ -1,5 +1,14 @@
 var currentSort = '';
 var headerSortingOptions = ['shopHeaderName', 'shopHeaderDescription', 'shopHeaderLimit', 'shopHeaderPrice']
+var ItemHeaders = {
+    id : 'ID',
+    img : 'Image',
+    name : 'Name',
+    description : 'Description',
+    limit : 'Limit',
+    price : 'Price',
+    addToCartButton : 'Add to Cart'
+};
 
 function addToCartProxy(event) {
     event = event || window.event;
@@ -87,7 +96,6 @@ function sortTable(event) {
 
 function initTable() {
     document.addEventListener('changePage', generateTable);
-    EventManager.addEventType('sort-shop');
     EventManager.subscribe('sort-shop', sortTable);
     generateTable();
 }

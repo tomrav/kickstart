@@ -18,13 +18,3 @@ function ExtendedItem() {
 
 ExtendedItem.prototype = new Item();
 ExtendedItem.prototype.constructor = ExtendedItem;
-
-ItemHeaders = {
-    id : 'ID',
-    img : 'Image',
-    name : 'Name',
-    description : 'Description',
-    limit : 'Limit',
-    price : 'Price',
-    addToCartButton : 'Add to Cart'
-};

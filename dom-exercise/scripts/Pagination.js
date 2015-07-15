@@ -16,7 +16,7 @@ var Pagination = {
         var paginationContainer = document.querySelector('#paginationContainer');
         paginationContainer.innerHTML = Painter.createPagination(paginationData);
         productsPerPageInput = document.querySelector('#itemsPerPage');
-        productsPerPageInput.addEventListener('change', Pagination.updatePageSize)
+        productsPerPageInput.addEventListener('change', Pagination.updatePageSize);
         if (changePageSize) {
             productsPerPageInput.focus();
         }
@@ -60,7 +60,6 @@ var Pagination = {
     },
 
     init: function () {
-        EventManager.addEventType('changePage');
         EventManager.subscribe('changePage', generateTable);
         Pagination.createPagination();
     }

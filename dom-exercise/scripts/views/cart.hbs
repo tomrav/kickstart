@@ -1,9 +1,15 @@
-
-
-<div>
-
-    <p>
-        hello world - cart
-    </p>
-
+<h2>à la carte</h2>
+<div class="table-container" id="cart">
+    {{> cartHeaderRow data=this rowStyle="table-header" cellStyle="cell" sortIcon="sort-icon" }}
+    {{#each this.items}}
+        {{> cartRow data=this rowStyle="table-row" cellStyle="cell" }}
+    {{/each}}
+</div>
+<div class="clearfix cart-total" id="cartTotal">
+    <div class="right">
+        <strong>Total:</strong>
+        <span>
+            {{cartTotal this}}
+        </span>
+    </div>
 </div>

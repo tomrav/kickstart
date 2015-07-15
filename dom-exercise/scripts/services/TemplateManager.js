@@ -43,6 +43,20 @@ var TemplateManager = {
         }
     },
 
+    addHelpers: function () {
+        Handlebars.registerHelper('itemTotal',
+            function (data) {
+                var result = data.item.price * data.quantity;
+                return new Handlebars.SafeString(result);
+            });
+        Handlebars.registerHelper('cartTotal',
+            function (cartData) {
+                var result = Cart.calculateTotal(cartData.items);
+                return new Handlebars.SafeString(result);
+            });
+
+    },
+
     applyContextToView: function (context, viewName) {
         return this.compiledViews[viewName](context);
     },
@@ -54,6 +68,7 @@ var TemplateManager = {
     },
 
     init: function () {
+        this.addHelpers();
         this.partialsList.forEach(function (value) {
             this.getPartial(value);
         }.bind(this));

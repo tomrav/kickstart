@@ -5,10 +5,16 @@
 
 var Cart = {
 
+    cartHeaders: {
+        name: 'Name',
+        img: 'Image',
+        description: 'Description',
+        quantity: 'Quantity',
+        price: 'Price',
+        removeFromCart: 'Remove from Cart'
+    },
+
     addToCartEvtId: 0,
-
-    cartElement: undefined,
-
     cartContent: {},
 
     addItem: function (item) {
@@ -18,44 +24,82 @@ var Cart = {
         } else {
             this.cartContent[itemId] = 1;
         }
+        this.updateCart();
     },
 
-    removeItem: function (itemId) {
+    removeItem: function (itemId, all) {
         var itemInCart = this.cartContent[itemId];
-        if (itemInCart.quantity > 1) {
-            itemInCart.quantity--;
-            this.updateCart();
+        if (itemInCart && itemInCart > 1) {
+            if (all) {
+                delete this.cartContent[itemId];
+            } else {
+                this.cartContent[itemId]--;
+            }
         } else {
-            delete itemInCart;
+            delete this.cartContent[itemId];
         }
         this.updateCart();
-        return itemInCart;
     },
 
     updateCart: function () {
-        // TODO: call for a re-render of the cart table with new content.
-        // TODO: re-calc sum total.
+        this.drawCart();
     },
 
-    sortCart: function() {
+    calculateTotal: function (items) {
+        return '$' + items.reduce(function (previousValue, currentValue) {
+            return previousValue + (currentValue.item.price * currentValue.quantity);
+        }, 0)
+    },
+
+    drawCart: function () {
+        var cartElement = document.querySelector('#cart-container');
+        cartElement.innerHTML = '';
+        var computedCartContent = DataManager.getCartContent();
+        cartElement.innerHTML = Painter.createTable(computedCartContent, 'cart', this.cartHeaders);
+        var cartRows = document.querySelectorAll('#cart-container .table-row');
+        var cartRowsArray = Array.prototype.slice.call(cartRows, 0);
+        this.wireCartButtonEvents(cartRowsArray);
+    },
+
+    cartEventProxy: function (event) {
+        event = event || window.event;
+        var eventName = event.target.name;
+        itemId = event.target.parentElement.parentElement.id;
+        EventManager.publish(eventName, itemId);
+    },
+
+    increaseItemQuantity: function (itemId) {
+        var item = DataManager.getItem(itemId);
+        this.addItem(item);
+    },
+
+    decreaseItemQuantity: function (itemId) {
+        var item = this.removeItem(itemId);
+        this.removeItem(item);
+    },
+
+    removeAllOfItemId: function (itemId) {
+        this.removeItem(itemId, true);
+    },
+
+    wireCartButtonEvents: function (cartRowsArray) {
+        cartRowsArray.forEach(function (value) {
+            var increaseButton = value.querySelector('.increase-quantity');
+            increaseButton.addEventListener('click', this.cartEventProxy);
+            var decreaseButton = value.querySelector('.decrease-quantity');
+            decreaseButton.addEventListener('click', this.cartEventProxy);
+            var removeButton = value.querySelector('.removeFromCart');
+            removeButton.addEventListener('click', this.cartEventProxy);
+        }.bind(this))
     },
 
     init: function () {
-        EventManager.addEventType('addToCart');
-        EventManager.addEventType('sort-cart');
         EventManager.subscribe('sort-cart', Cart.sortCart);
         Cart.addToCartEvtId = EventManager.subscribe('addToCart', this.addItem.bind(this));
-        Cart.cartElement = document.querySelector('.cart');
-        //Cart.cartElement = Painter.createTable(this.cartContent, CartHeaders, 'cart');
-        //DomHelper.insertAfter(Cart.cartElement, document.getElementById('cart-title'));
+        Cart.removeFomCartEvtId = EventManager.subscribe('removeFromCart', this.removeAllOfItemId.bind(this));
+        Cart.increaseQuantityEvtId = EventManager.subscribe('increaseButton', this.increaseItemQuantity.bind(this));
+        Cart.decreaseQuantityEvtId = EventManager.subscribe('decreaseButton', this.decreaseItemQuantity.bind(this));
+        Cart.drawCart();
     }
 };
 
-var CartHeaders = {
-    id: 'ID',
-    name: 'Name',
-    img: 'Image',
-    note: 'Note',
-    quantity: 'Quantity',
-    price: 'Price'
-};
