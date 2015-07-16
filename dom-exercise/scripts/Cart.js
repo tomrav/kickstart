@@ -16,6 +16,8 @@ var Cart = {
 
     addToCartEvtId: 0,
     cartContent: {},
+    activeCoupons: {},
+    cartTotal: 0,
 
     addItem: function (item) {
         var itemId = item.id;
@@ -45,10 +47,52 @@ var Cart = {
         this.drawCart();
     },
 
+    calculateCouponValue: function (coupon) {
+        var lowestPrice = 0;
+        var discount = 0;
+        if (coupon.type === 'itemOff') {
+            for (var key in this.cartContent) {
+                var price = DataManager.getItem(key).price;
+                if ( lowestPrice === 0 || price < lowestPrice) {
+                    lowestPrice = price;
+                }
+            }
+        }
+        if (coupon.type === 'percentOff') {
+            discount = this.cartTotal * (coupon.amount / 100);
+        }
+
+
+        return lowestPrice + discount;
+    },
+
+    calculateActiveCoupons: function () {
+        var discount = 0;
+        for (var code in this.activeCoupons) {
+            if (this.activeCoupons.hasOwnProperty(code)) {
+                discount += this.calculateCouponValue(this.activeCoupons[code]);
+            }
+        }
+        return discount;
+    },
+
     calculateTotal: function (items) {
-        return '$' + items.reduce(function (previousValue, currentValue) {
+        var discount = this.calculateActiveCoupons() || 0;
+        this.cartTotal = items.reduce(function (previousValue, currentValue) {
             return previousValue + (currentValue.item.price * currentValue.quantity);
-        }, 0)
+        }, 0);
+        var totalWithDiscount = this.cartTotal - discount;
+        return (totalWithDiscount < 0) ? 0 : totalWithDiscount ;
+    },
+
+    applyCoupon: function (couponCode) {
+        if (Coupon.validateCoupon(couponCode)) {
+            if (!this.activeCoupons[couponCode]) {
+                var coupon = Coupon.getCouponValue(couponCode);
+                this.activeCoupons[couponCode] = coupon;
+                this.updateCart();
+            }
+        }
     },
 
     drawCart: function () {
@@ -90,7 +134,15 @@ var Cart = {
             decreaseButton.addEventListener('click', this.cartEventProxy);
             var removeButton = value.querySelector('.removeFromCart');
             removeButton.addEventListener('click', this.cartEventProxy);
-        }.bind(this))
+        }.bind(this));
+        var submitCoupon = document.querySelector('#submitCoupon');
+        submitCoupon.addEventListener('click', this.submitCouponEventProxy);
+    },
+
+    submitCouponEventProxy: function (event) {
+        event = event || window.event;
+        code = document.querySelector('#couponInput').value;
+        EventManager.publish('submitCoupon', code);
     },
 
     init: function () {
@@ -99,6 +151,7 @@ var Cart = {
         Cart.removeFomCartEvtId = EventManager.subscribe('removeFromCart', this.removeAllOfItemId.bind(this));
         Cart.increaseQuantityEvtId = EventManager.subscribe('increaseButton', this.increaseItemQuantity.bind(this));
         Cart.decreaseQuantityEvtId = EventManager.subscribe('decreaseButton', this.decreaseItemQuantity.bind(this));
+        Cart.submitCouponEvtId = EventManager.subscribe('submitCoupon', this.applyCoupon.bind(this));
         Cart.drawCart();
     }
 };

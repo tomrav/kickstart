@@ -5,6 +5,7 @@ var app = {
         Pagination.init();
         initTable();
         Cart.init();
+        Coupon.init();
     },
 
     init: function () {

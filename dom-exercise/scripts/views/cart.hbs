@@ -9,7 +9,16 @@
     <div class="right">
         <strong>Total:</strong>
         <span>
-            {{cartTotal this}}
+            ${{cartTotal this}}
         </span>
+    </div>
+    <div class="coupon-container">
+        <label for="couponInput">
+            Apply Coupon:
+            <input class="coupon-input" type="text" id="couponInput" placeholder="enter coupon code here"/>
+        </label>
+        <button class="addToCartButton" id="submitCoupon">
+            Submit!
+        </button>
     </div>
 </div>
