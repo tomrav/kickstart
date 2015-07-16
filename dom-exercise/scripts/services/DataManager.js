@@ -52,6 +52,10 @@ var DataManager = {
                 currency = '$';
 
             var obj = new Item(id, image, name, description, limit, price, currency);
+            if (i % 5 === 0) {
+                obj = Object.create(obj);
+                obj.discountAmount = faker.random.number({min: 1, max: 5});
+            }
             this.productsList.push(obj);
             this.productsMap[id] = obj;
         }

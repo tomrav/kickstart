@@ -1,0 +1,9 @@
+
+.full-price {
+    text-decoration: line-through;
+    color: rgb(22, 149, 163);
+}
+
+.discount-price {
+    font-weight: bold;
+}

@@ -1,16 +1,16 @@
-<div class="{{rowStyle}}" id="{{this.id}}">
+<div class="{{rowStyle}}" id="{{data.id}}">
     <div class="{{cellStyle}}">
-        {{this.name}}
+        {{data.name}}
     </div>
-    <img src="{{this.image}}" class="{{cellStyle}} thumbnail-image"/>
+    <img src="{{data.image}}" class="{{cellStyle}} thumbnail-image"/>
     <div class="{{cellStyle}}">
-        {{this.description}}
-    </div>
-    <div class="{{cellStyle}}">
-        {{this.limit}}
+        {{data.description}}
     </div>
     <div class="{{cellStyle}}">
-        {{this.currency}}{{this.price}}
+        {{data.limit}}
+    </div>
+    <div class="{{cellStyle}}">
+        {{checkDiscount data}}
     </div>
     <div class="{{cellStyle}}">
         <button class="addToCartButton">

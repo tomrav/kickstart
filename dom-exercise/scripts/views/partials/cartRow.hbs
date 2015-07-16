@@ -18,7 +18,11 @@
             Item price:
         </p>
         <span>
-            {{this.item.currency}}{{this.item.price}}
+            {{#if data.item.discountAmount}}
+                {{data.item.currency}}{{itemAfterDiscount this}}
+            {{else}}
+                {{data.item.currency}}{{data.item.price}}
+            {{/if}}
         </span>
         <p>
             Total Price:

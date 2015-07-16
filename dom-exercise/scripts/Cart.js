@@ -79,7 +79,11 @@ var Cart = {
     calculateTotal: function (items) {
         var discount = this.calculateActiveCoupons() || 0;
         this.cartTotal = items.reduce(function (previousValue, currentValue) {
-            return previousValue + (currentValue.item.price * currentValue.quantity);
+            if (currentValue.item.discountAmount) {
+                return previousValue + ((currentValue.item.price - currentValue.item.discountAmount) * currentValue.quantity);
+            } else {
+                return previousValue + (currentValue.item.price * currentValue.quantity)
+            }
         }, 0);
         var totalWithDiscount = this.cartTotal - discount;
         return (totalWithDiscount < 0) ? 0 : totalWithDiscount ;
