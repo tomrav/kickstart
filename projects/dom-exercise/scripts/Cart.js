@@ -21,6 +21,7 @@ var Cart = {
 
     addItem: function (item) {
         var itemId = item.id;
+
         if (this.cartContent[itemId]) {
             this.cartContent[itemId]++;
         } else {
@@ -123,7 +124,7 @@ var Cart = {
 
     decreaseItemQuantity: function (itemId) {
         var item = this.removeItem(itemId);
-        this.removeItem(item);
+        //this.removeItem(item);
     },
 
     removeAllOfItemId: function (itemId) {

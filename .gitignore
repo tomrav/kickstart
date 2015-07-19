@@ -1,1 +1,4 @@
 .idea/
+projects/dom-exercise/dist
+projects/dom-exercise/build
+**/node_modules/**

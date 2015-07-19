@@ -45,7 +45,7 @@ var Coupon = {
     },
 
     validateCoupon: function (couponCode) {
-        return (this.couponList[couponCode]) ? true : false;
+        return Boolean(this.couponList[couponCode]);
     },
 
     init: function () {

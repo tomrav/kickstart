@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- build:js style.min.css -->
     <link rel="stylesheet" href="styles/helpers.css"/>
     <link rel="stylesheet" href="styles/colors.css"/>
     <link rel="stylesheet" href="styles/typography.css"/>
     <link rel="stylesheet" href="styles/layout.css"/>
+    <!-- /build -->
     <title>THIS IS STUFF</title>
 </head>
 <body class="body-background">
@@ -16,21 +18,16 @@
     <div id="shopContainer">
     </div>
     <div id="paginationContainer">
-
     </div>
-    <!--<div class="positionPaging" id="pagingContainer">-->
-        <!--<label id="itemsPerPageLabel" for="itemsPerPage">-->
-            <!--Items per Page-->
-            <!--<input id="itemsPerPage" name="itemsPerPage" type="number" min="0" value="10"/>-->
-        <!--</label>-->
-    <!--</div>-->
     <div class="cart-container" id="cart-container">
-        <!--<h2 id="cart-title">à la carte</h2>-->
     </div>
 </main>
 
+<!-- build:js app.min.js -->
 <script src="scripts/libs/zaifan.js" type="text/javascript"></script>
 <script src="scripts/libs/handlebars.js" type="text/javascript"></script>
+<script src="scripts/helpers/HandlebarHelpers.js" type="text/javascript"></script>
+<script src="build/scripts/templates.jst" type="text/javascript"></script>
 <script src="scripts/types/Item.js" type="text/javascript"></script>
 <script src="scripts/types/Coupon.js" type="text/javascript"></script>
 <script src="scripts/Cart.js" type="text/javascript"></script>
@@ -42,5 +39,6 @@
 <script src="scripts/Pagination.js" type="text/javascript"></script>
 <script src="scripts/Table.js" type="text/javascript"></script>
 <script src="scripts/app.js" type="text/javascript"></script>
+<!-- /build -->
 </body>
 </html>

@@ -26,7 +26,7 @@ function generateTable(event) {
     event = event || window.event;
     var pageIndex = event && typeof event === 'number' ? event : 0;
     removeTable();
-    var paginatedProducts = Pagination.getPaginatedProducts(pageIndex);
+    var paginatedProducts = app.pagination.getPaginatedProducts(pageIndex);
     var table = document.querySelector('#shopContainer');
     table.innerHTML = Painter.createTable(paginatedProducts, 'shop', ItemHeaders);
     wireSortEvents();

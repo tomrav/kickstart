@@ -1,21 +1,31 @@
-var app = {
+var app = (function() {
 
-    templatesLoaded: function () {
-        DataManager.init(35);
-        Pagination.init();
+    var templatesLoaded = function () {
         initTable();
         Cart.init();
         Coupon.init();
-    },
+    };
 
-    init: function () {
+    var loadModules = function () {
+        DataManager.init(35);
+        app.pagination = Pagination.init();
+        templatesLoaded();
+    };
+
+    var init = function () {
         document.addEventListener("DOMContentLoaded", function (event) {
-            EventManager.subscribe('templatesLoaded', this.templatesLoaded);
+            EventManager.subscribe('templatesLoaded', this.loadModules.bind(app));
             TemplateManager.init();
         }.bind(this));
+    };
+
+    return {
+        init: init,
+        loadModules: loadModules,
+        templatesLoaded: templatesLoaded
     }
 
-};
+})();
 
 app.init();
 
