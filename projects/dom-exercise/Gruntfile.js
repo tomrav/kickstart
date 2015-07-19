@@ -3,16 +3,20 @@
 module.exports = function (grunt) {
 
     grunt.config.init({
-        //watch: {
-        //    js: {
-        //        files: ['src/**/*.js'],
-        //        tasks: ['']
-        //    },
-        //    css: {
-        //        files: ['src/**/*.css'],
-        //        tasks: ['']
-        //    }
-        //},
+        watch: {
+            js: {
+                files: ['scripts/**/*.js'],
+                tasks: ['build']
+            },
+            css: {
+                files: ['src/**/*.css'],
+                tasks: ['build']
+            },
+            handlebars: {
+                files: ['scripts/**/*.hbs'],
+                tasks: ['build']
+            }
+        },
         clean: {
             main: {
                 src: ['dist/**', 'build/**', '!dist/index.html']
@@ -24,7 +28,7 @@ module.exports = function (grunt) {
         cssmin: {
             main: {
                 files: {
-                    'dist/style.min.css': ['dist/styles.concat.css']
+                    'dist/style.min.css': ['dist/*.css']
                 }
             }
         },
@@ -69,7 +73,7 @@ module.exports = function (grunt) {
             main: {
                 options: {
                     namespace: 'Templates',
-                    processName: function(filePath) {
+                    processName: function (filePath) {
                         return filePath.replace(/^scripts\/views\//, '').replace(/\.hbs$/, '');
                     }
                 },
@@ -90,12 +94,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-concat-css');
 
-    grunt.registerTask('default', ['clean:main', 'handlebars', 'copy']);
-    grunt.registerTask('dist', ['concat', 'concat_css', 'processhtml','uglify', 'cssmin', 'clean:temp']);
-
-    //grunt.registerTask('check', ['']);
-    //grunt.registerTask('build', ['clean', 'copy', 'processhtml']);
-    //grunt.registerTask('dev', ['connect:dev']);
-    //grunt.registerTask('prod', ['default', 'connect:prod']);
+    grunt.registerTask('default', ['build']);
+    grunt.registerTask('build', ['clean:main', 'handlebars', 'copy']);
+    grunt.registerTask('dist', ['concat', 'concat_css', 'processhtml', 'uglify', 'cssmin', 'clean:temp']);
 
 };

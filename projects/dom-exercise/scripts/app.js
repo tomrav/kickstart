@@ -28,4 +28,3 @@ var app = (function() {
 })();
 
 app.init();
-
