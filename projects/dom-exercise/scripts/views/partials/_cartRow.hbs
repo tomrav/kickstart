@@ -18,10 +18,10 @@
             Item price:
         </p>
         <span>
-            {{#if data.item.discountAmount}}
-                {{data.item.currency}}{{itemAfterDiscount this}}
+            {{#if this.item.discountAmount}}
+                {{this.item.currency}}{{itemAfterDiscount this}}
             {{else}}
-                {{data.item.currency}}{{data.item.price}}
+                {{this.item.currency}}{{this.item.price}}
             {{/if}}
         </span>
         <p>

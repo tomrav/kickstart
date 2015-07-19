@@ -2,7 +2,7 @@
 <div class="table-container" id="cart">
     {{> cartHeaderRow data=this rowStyle="table-header" cellStyle="cell" sortIcon="sort-icon" }}
     {{#each this.items}}
-        {{> cartRow data=this rowStyle="table-row" cellStyle="cell" }}
+        {{> cartRow rowStyle="table-row" cellStyle="cell" }}
     {{/each}}
 </div>
 <div class="clearfix cart-total" id="cartTotal">
