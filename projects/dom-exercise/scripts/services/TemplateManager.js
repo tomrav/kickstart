@@ -1,11 +1,12 @@
-var TemplateManager = {
+define(['../helpers/HandlebarHelpers', '../views/compiledViews'], function (HandlebarHelpers, Templates) {
+    return {
 
-    applyContextToView: function (context, viewName) {
-        return Templates[viewName](context);
-    },
+        applyContextToView: function (context, viewName) {
+            return Templates[viewName](context);
+        },
 
-    init: function () {
-        HandlebarHelpers();
-        EventManager.publish('templatesLoaded');
+        init: function () {
+            HandlebarHelpers();
+        }
     }
-};
+});

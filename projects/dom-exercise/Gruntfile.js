@@ -80,6 +80,7 @@ module.exports = function (grunt) {
         handlebars: {
             main: {
                 options: {
+                    amd: true,
                     namespace: 'Templates',
                     processName: function (filePath) {
                         return filePath.replace(/^scripts\/views\//, '').replace(/\.hbs$/, '');

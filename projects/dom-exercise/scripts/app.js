@@ -1,30 +1,17 @@
-var app = (function () {
 
-    function templatesLoaded() {
-        initTable();
-        Cart.init();
-        Coupon.init();
+requirejs.config({
+    paths: {
+        Handlebars: './libs/Handlebars'
     }
+})
 
-    function loadModules() {
-        DataManager.init(35);
-        app.pagination = Pagination.init();
-        templatesLoaded();
-    }
+define('app', ['./Cart', './services/DataManager', './Table', './services/EventManager', './services/TemplateManager', './Pagination', './types/Coupon'], function (Cart, DataManager, Table, EventManager, TemplateManager, Pagination, Coupon) {
 
-    function init() {
-        document.addEventListener("DOMContentLoaded", function () {
-            EventManager.subscribe('templatesLoaded', this.loadModules.bind(app));
-            TemplateManager.init();
-        }.bind(this));
-    }
+    TemplateManager.init();
+    DataManager.init(35);
+    Coupon.init();
+    Pagination.init();
+    Table.init();
+    Cart.init();
 
-    return {
-        init: init,
-        loadModules: loadModules,
-        templatesLoaded: templatesLoaded
-    };
-
-})();
-
-app.init();
+});
