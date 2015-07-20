@@ -56,8 +56,8 @@ var Pagination = (function () {
 
     var changePageProxy = function (event) {
         event = event || window.event;
-        pageIndex = parseInt(event.target.textContent.trim() - 1, 10);
-        EventManager.publish('changePage', pageIndex)
+        var pageIndex = parseInt(event.target.textContent.trim() - 1, 10);
+        EventManager.publish('changePage', pageIndex);
     };
 
     var init = function () {

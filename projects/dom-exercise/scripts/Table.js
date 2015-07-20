@@ -1,5 +1,5 @@
 var currentSort = '';
-var headerSortingOptions = ['shopHeaderName', 'shopHeaderDescription', 'shopHeaderLimit', 'shopHeaderPrice']
+var headerSortingOptions = ['shopHeaderName', 'shopHeaderDescription', 'shopHeaderLimit', 'shopHeaderPrice'];
 var ItemHeaders = {
     id : 'ID',
     img : 'Image',
@@ -42,7 +42,7 @@ function wireSortEvents() {
 
 function sortEventProxy (event) {
     event = event || window.event;
-    eventName = 'sort-shop';
+    var eventName = 'sort-shop';
     EventManager.publish(eventName, event);
 }
 

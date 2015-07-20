@@ -28,7 +28,7 @@ var HandlebarHelpers = function () {
         function (itemData) {
             var result = '';
             if (itemData.discountAmount) {
-                discountedPrice = itemData.price - itemData.discountAmount;
+                var discountedPrice = itemData.price - itemData.discountAmount;
                 result = '<span class="full-price">' + itemData.currency + itemData.price +
                     '</span><br><span class="discount-price">' + itemData.currency + discountedPrice + '</span>'
             } else {

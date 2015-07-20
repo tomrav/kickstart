@@ -1,4 +1,4 @@
-var DomHelper = (function() {
+var DomHelper = (function () {
     return {
         addClasses: function (element, classes) {
             // first case for single class, second for array of classes
@@ -7,7 +7,7 @@ var DomHelper = (function() {
             } else if (Array.isArray(classes)) {
                 classes.forEach(function (value) {
                     element.classList.add(value);
-                })
+                });
             }
         },
 
@@ -17,7 +17,7 @@ var DomHelper = (function() {
             } else if (Array.isArray(classes)) {
                 classes.forEach(function (value) {
                     element.classList.remove(value);
-                })
+                });
             }
         },
 
@@ -28,5 +28,5 @@ var DomHelper = (function() {
         removeElement: function (referenceNode) {
             referenceNode && referenceNode.parentElement && referenceNode.parentElement.removeChild(referenceNode);
         }
-    }
+    };
 }());

@@ -44,18 +44,18 @@ var EventManager = {
     publish: function (evtType, payload) {
         payload = payload || null;
         if (this.eventStore[evtType]) {
-            this.eventStore[evtType].forEach(function (value, index, array) {
+            this.eventStore[evtType].forEach(function (value) {
                 value.cb(payload);
             });
         }
     },
 
     unsubscribe: function (evtType, id) {
-        this.eventStore[evtType].forEach(function (value, index, array) {
+        this.eventStore[evtType].forEach(function (value, index) {
             if (value.id === id) {
-                delete eventStore[evtType][index];
+                delete this.eventStore[evtType][index];
             }
-        })
+        });
     }
 
 };

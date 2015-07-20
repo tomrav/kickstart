@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint global-strict: 0 */
 'use strict';
 
 module.exports = function (grunt) {
@@ -24,6 +26,12 @@ module.exports = function (grunt) {
             temp: {
                 src: ['dist/*.concat.*']
             }
+        },
+        eslint: {
+            options: {
+                silent: true
+            },
+            src: ['scripts/**/*.js', '!scripts/node_modules/**/*', '!scripts/libs/*.js']
         },
         cssmin: {
             main: {
@@ -90,12 +98,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-eslint');
     grunt.loadNpmTasks('grunt-contrib-handlebars');
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-concat-css');
 
     grunt.registerTask('default', ['build']);
-    grunt.registerTask('build', ['clean:main', 'handlebars', 'copy']);
+    grunt.registerTask('build', ['clean:main', 'eslint', 'handlebars', 'copy']);
     grunt.registerTask('dist', ['concat', 'concat_css', 'processhtml', 'uglify', 'cssmin', 'clean:temp']);
 
 };

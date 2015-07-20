@@ -16,7 +16,7 @@ var DataManager = {
     },
 
     sortItems: function (currentSortParam, newSortParam) {
-        var comperator = function (a, b) {
+        function comperator (a, b) {
             if (a[newSortParam] > b[newSortParam]) {
                 return 1;
             }
@@ -27,7 +27,7 @@ var DataManager = {
         };
         if (newSortParam === currentSortParam) {
             this.productsList.sort(function (a, b) {
-                return (0 - comperator(a, b));
+                return 0 - comperator(a, b);
             });
             currentSortParam = '';
         } else {

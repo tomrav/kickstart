@@ -1,3 +1,4 @@
+'use strict';
 // Cart Content
 //  id : quantity
 //
@@ -93,8 +94,7 @@ var Cart = {
     applyCoupon: function (couponCode) {
         if (Coupon.validateCoupon(couponCode)) {
             if (!this.activeCoupons[couponCode]) {
-                var coupon = Coupon.getCouponValue(couponCode);
-                this.activeCoupons[couponCode] = coupon;
+                this.activeCoupons[couponCode] = Coupon.getCouponValue(couponCode);
                 this.updateCart();
             }
         }
@@ -113,7 +113,7 @@ var Cart = {
     cartEventProxy: function (event) {
         event = event || window.event;
         var eventName = event.target.name;
-        itemId = event.target.parentElement.parentElement.id;
+        var itemId = event.target.parentElement.parentElement.id;
         EventManager.publish(eventName, itemId);
     },
 
@@ -123,8 +123,7 @@ var Cart = {
     },
 
     decreaseItemQuantity: function (itemId) {
-        var item = this.removeItem(itemId);
-        //this.removeItem(item);
+        this.removeItem(itemId);
     },
 
     removeAllOfItemId: function (itemId) {
@@ -144,14 +143,13 @@ var Cart = {
         submitCoupon.addEventListener('click', this.submitCouponEventProxy);
     },
 
-    submitCouponEventProxy: function (event) {
-        event = event || window.event;
-        code = document.querySelector('#couponInput').value;
+    submitCouponEventProxy: function () {
+        var code = document.querySelector('#couponInput').value;
         EventManager.publish('submitCoupon', code);
     },
 
     init: function () {
-        EventManager.subscribe('sort-cart', Cart.sortCart);
+        EventManager.subscribe('sort-cart', this.sortCart);
         Cart.addToCartEvtId = EventManager.subscribe('addToCart', this.addItem.bind(this));
         Cart.removeFomCartEvtId = EventManager.subscribe('removeFromCart', this.removeAllOfItemId.bind(this));
         Cart.increaseQuantityEvtId = EventManager.subscribe('increaseButton', this.increaseItemQuantity.bind(this));
