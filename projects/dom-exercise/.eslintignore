@@ -1,4 +1,6 @@
 node_modules/*
 **/libs/**/*.js
-build/*
-dist/*
+**/libs/*.js
+build/**/*
+dist/**/*
+**/views/compiledViews.js

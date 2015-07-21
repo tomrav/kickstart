@@ -49,8 +49,19 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: './',
-                        src: ['**', '!scripts/views/**', '!node_modules/**', '!package.json'],
+                        src: ['**', 'scripts/views/compiledViews.js', '!scripts/views/**/*.hbs', '!scripts/views/partials', '!node_modules/**', '!package.json', '!Gruntfile.js'],
                         dest: 'build/'
+                    }
+                ]
+            },
+            require: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: './',
+                        src: ['build/scripts/libs/require.js'],
+                        flatten: true,
+                        dest: 'dist/'
                     }
                 ]
             }
@@ -78,7 +89,7 @@ module.exports = function (grunt) {
             }
         },
         handlebars: {
-            main: {
+            compile: {
                 options: {
                     amd: true,
                     namespace: 'Templates',
@@ -87,7 +98,18 @@ module.exports = function (grunt) {
                     }
                 },
                 files: {
-                    'build/scripts/templates.jst': ['scripts/views/**/*.hbs']
+                    'scripts/views/compiledViews.js': ['scripts/views/**/*.hbs']
+                }
+            }
+        },
+        requirejs: {
+            app: {
+                options: {
+                    baseUrl: 'build/scripts/',
+                    mainConfigFile: 'build/scripts/app.js',
+                    name: 'app', // assumes a production build using almond
+                    out: 'dist/app.min.js',
+                    optimize: 'uglify'
                 }
             }
         }
@@ -101,11 +123,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-eslint');
     grunt.loadNpmTasks('grunt-contrib-handlebars');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-concat-css');
 
     grunt.registerTask('default', ['build']);
-    grunt.registerTask('build', ['clean:main', 'eslint', 'handlebars', 'copy']);
-    grunt.registerTask('dist', ['concat', 'concat_css', 'processhtml', 'uglify', 'cssmin', 'clean:temp']);
+    grunt.registerTask('build', ['clean:main', 'eslint', 'handlebars:compile', 'copy:main']);
+    grunt.registerTask('dist', ['copy:require', 'requirejs', 'concat_css', 'processhtml', 'cssmin', 'clean:temp']);
 
 };

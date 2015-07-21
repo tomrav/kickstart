@@ -1,12 +1,11 @@
 
 requirejs.config({
     paths: {
-        Handlebars: './libs/Handlebars'
+        handlebars: './libs/handlebars'
     }
-})
+});
 
-define('app', ['./Cart', './services/DataManager', './Table', './services/EventManager', './services/TemplateManager', './Pagination', './types/Coupon'], function (Cart, DataManager, Table, EventManager, TemplateManager, Pagination, Coupon) {
-
+require(['./Cart', './services/DataManager', './Table', './services/EventManager', './services/TemplateManager', './Pagination', './types/Coupon'], function (Cart, DataManager, Table, EventManager, TemplateManager, Pagination, Coupon) {
     TemplateManager.init();
     DataManager.init(35);
     Coupon.init();

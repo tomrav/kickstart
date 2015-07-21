@@ -3,7 +3,7 @@
 //  id : quantity
 //
 
-define(['./services/DataManager', './services/EventManager', './helpers/Painter', 'Handlebars', './types/Coupon'], function (DataManager, EventManager, Painter, Handlebars, Coupon) {
+define(['./services/DataManager', './services/EventManager', './helpers/Painter', 'handlebars', './types/Coupon'], function (DataManager, EventManager, Painter, Handlebars, Coupon) {
     return {
         cartHeaders: {
             name: 'Name',

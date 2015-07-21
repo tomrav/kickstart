@@ -1,4 +1,4 @@
-define(['Handlebars', '../Cart'], function (Handlebars, Cart) {
+define(['handlebars', '../Cart'], function (Handlebars, Cart) {
     return function () {
         Handlebars.registerHelper('itemTotal',
             function (itemData) {
