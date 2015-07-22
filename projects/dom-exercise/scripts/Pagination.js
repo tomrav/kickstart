@@ -35,7 +35,7 @@ define(['./services/DataManager', './services/EventManager', './helpers/Painter'
             var paginationButtonsArray = Array.prototype.slice.call(paginationButtons, 0);
             paginationButtonsArray.forEach(function (value) {
                 value.addEventListener('click', this.changePageProxy);
-            })
+            }.bind(this))
         },
 
         getPaginatedProducts: function (index) {

@@ -128,6 +128,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concat-css');
 
     grunt.registerTask('default', ['build']);
+    grunt.registerTask('all', ['build', 'dist']);
     grunt.registerTask('build', ['clean:main', 'eslint', 'handlebars:compile', 'copy:main']);
     grunt.registerTask('dist', ['copy:require', 'requirejs', 'concat_css', 'processhtml', 'cssmin', 'clean:temp']);
 
