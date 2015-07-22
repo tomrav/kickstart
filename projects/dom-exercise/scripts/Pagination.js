@@ -1,4 +1,4 @@
-define(['./services/DataManager', './services/EventManager', './helpers/Painter', './Table'], function (DataManager, EventManager, Painter, Table) {
+define(['./services/DataManager', './services/EventManager', './helpers/Painter', 'lodash'], function (DataManager, EventManager, Painter, _) {
     return {
         productsPerPageInput: null,
 
@@ -32,10 +32,10 @@ define(['./services/DataManager', './services/EventManager', './helpers/Painter'
 
         wirePaginationButtonEvents: function () {
             var paginationButtons = document.querySelectorAll('#shopPagination > li');
-            var paginationButtonsArray = Array.prototype.slice.call(paginationButtons, 0);
+            var paginationButtonsArray = _.toArray(paginationButtons);
             paginationButtonsArray.forEach(function (value) {
                 value.addEventListener('click', this.changePageProxy);
-            }.bind(this))
+            }.bind(this));
         },
 
         getPaginatedProducts: function (index) {
@@ -49,7 +49,6 @@ define(['./services/DataManager', './services/EventManager', './helpers/Painter'
                 event.target.value = 1;
             }
             EventManager.publish('redraw-shop', event);
-            //Table.generateTable(event);
 
             this.createPagination(true);
         },

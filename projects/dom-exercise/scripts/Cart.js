@@ -3,7 +3,7 @@
 //  id : quantity
 //
 
-define(['./services/DataManager', './services/EventManager', './helpers/Painter', 'handlebars', './types/Coupon'], function (DataManager, EventManager, Painter, Handlebars, Coupon) {
+define(['./services/DataManager', 'lodash', './services/EventManager', './helpers/Painter', 'handlebars', './types/Coupon'], function (DataManager, lodash, EventManager, Painter, Handlebars, Coupon) {
     return {
         cartHeaders: {
             name: 'Name',
@@ -80,7 +80,7 @@ define(['./services/DataManager', './services/EventManager', './helpers/Painter'
             var discount = this.calculateActiveCoupons() || 0;
             this.cartTotal = items.reduce(function (previousValue, currentValue) {
                 if (currentValue.item.discountAmount) {
-                    return previousValue + ((currentValue.item.price - currentValue.item.discountAmount) * currentValue.quantity);
+                    return previousValue + ((currentValue.item.price - currentValue.item.discountAmount) * currentValue.quantity)
                 } else {
                     return previousValue + (currentValue.item.price * currentValue.quantity)
                 }
@@ -104,7 +104,7 @@ define(['./services/DataManager', './services/EventManager', './helpers/Painter'
             var computedCartContent = DataManager.getCartContent();
             cartElement.innerHTML = Painter.createTable(computedCartContent, 'cart', this.cartHeaders);
             var cartRows = document.querySelectorAll('#cart-container .table-row');
-            var cartRowsArray = Array.prototype.slice.call(cartRows, 0);
+            var cartRowsArray = _.toArray(cartRows);
             this.wireCartButtonEvents(cartRowsArray);
         },
 
@@ -147,7 +147,6 @@ define(['./services/DataManager', './services/EventManager', './helpers/Painter'
         },
 
         init: function () {
-            EventManager.subscribe('sort-cart', this.sortCart);
             this.addToCartEvtId = EventManager.subscribe('addToCart', this.addItem.bind(this));
             this.removeFomCartEvtId = EventManager.subscribe('removeFromCart', this.removeAllOfItemId.bind(this));
             this.increaseQuantityEvtId = EventManager.subscribe('increaseButton', this.increaseItemQuantity.bind(this));

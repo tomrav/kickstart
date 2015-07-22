@@ -1,4 +1,5 @@
 define(['../services/TemplateManager'], function (TemplateManager) {
+    'use strict';
     return {
 
         createTable: function (products, tableType, headers) {
@@ -14,6 +15,6 @@ define(['../services/TemplateManager'], function (TemplateManager) {
 
             return TemplateManager.applyContextToView(numOfPagesArray, 'pagination');
         }
-    }
+    };
 });
 

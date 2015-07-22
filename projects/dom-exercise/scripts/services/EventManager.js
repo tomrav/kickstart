@@ -18,6 +18,7 @@
 
 
 define([''], function () {
+    'use strict';
     return {
 
         eventStore: {},
@@ -56,9 +57,8 @@ define([''], function () {
                 if (value.id === id) {
                     delete this.eventStore[evtType][index];
                 }
-            });
+            }.bind(this));
         }
-
-    }
+    };
 });
 

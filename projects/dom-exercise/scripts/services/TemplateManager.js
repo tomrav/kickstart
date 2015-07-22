@@ -1,4 +1,5 @@
-define(['../helpers/HandlebarHelpers', '../views/compiledViews'], function (HandlebarHelpers, Templates) {
+define(['../helpers/HandlebarHelpers', '../views/compiledViews'], function (handlebarHelpers, Templates) {
+    'use strict';
     return {
 
         applyContextToView: function (context, viewName) {
@@ -6,7 +7,7 @@ define(['../helpers/HandlebarHelpers', '../views/compiledViews'], function (Hand
         },
 
         init: function () {
-            HandlebarHelpers();
+            handlebarHelpers();
         }
-    }
+    };
 });

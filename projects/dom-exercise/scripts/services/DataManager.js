@@ -1,6 +1,5 @@
-
-define(['../Cart', '../libs/zaifan', '../types/Item'], function (Cart, faker, Item) {
-
+define(['../Cart', 'zaifan', '../types/Item'], function (Cart, faker, Item) {
+    'use strict';
     return {
         productsList: [],
 
@@ -14,11 +13,11 @@ define(['../Cart', '../libs/zaifan', '../types/Item'], function (Cart, faker, It
                     item: this.productsMap[value],
                     quantity: this.cartContent[value]
                 };
-            }, this)
+            }, this);
         },
 
         sortItems: function (currentSortParam, newSortParam) {
-            function comperator (a, b) {
+            function comparator(a, b) {
                 if (a[newSortParam] > b[newSortParam]) {
                     return 1;
                 }
@@ -26,14 +25,15 @@ define(['../Cart', '../libs/zaifan', '../types/Item'], function (Cart, faker, It
                     return -1;
                 }
                 return 0;
-            };
+            }
+
             if (newSortParam === currentSortParam) {
                 this.productsList.sort(function (a, b) {
-                    return 0 - comperator(a, b);
+                    return 0 - comparator(a, b);
                 });
                 currentSortParam = '';
             } else {
-                this.productsList.sort(comperator);
+                this.productsList.sort(comparator);
                 currentSortParam = newSortParam;
             }
             return currentSortParam;
@@ -62,5 +62,5 @@ define(['../Cart', '../libs/zaifan', '../types/Item'], function (Cart, faker, It
                 this.productsMap[id] = obj;
             }
         }
-    }
+    };
 });

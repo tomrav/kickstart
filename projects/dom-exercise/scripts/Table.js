@@ -1,7 +1,6 @@
-define(['./services/DataManager', './services/EventManager', './helpers/Painter', './Pagination', './helpers/DomHelper'], function (DataManager, EventManager, Painter, Pagination, DomHelper) {
+define(['./services/DataManager', './services/EventManager', './helpers/Painter', './Pagination', './helpers/DomHelper', 'lodash'], function (DataManager, EventManager, Painter, Pagination, DomHelper, _) {
+    'use strict';
     return {
-
-
         currentSort: '',
         headerSortingOptions: ['shopHeaderName', 'shopHeaderDescription', 'shopHeaderLimit', 'shopHeaderPrice'],
         itemHeaders: {
@@ -52,10 +51,10 @@ define(['./services/DataManager', './services/EventManager', './helpers/Painter'
 
         wireAddToCartEvent: function () {
             var rows = document.querySelectorAll('#shop .table-row');
-            var rowsArray = Array.prototype.slice.call(rows, 0);
+            var rowsArray = _.toArray(rows);
             rowsArray.forEach(function (value) {
                 value.addEventListener('click', this.addToCartProxy);
-            }.bind(this))
+            }.bind(this));
         },
 
         removeTable: function () {
@@ -66,7 +65,7 @@ define(['./services/DataManager', './services/EventManager', './helpers/Painter'
                     cell.removeEventListener('click', this.sortEventProxy);
                 }.bind(this));
                 var rows = document.querySelectorAll('#shop .table-row');
-                var rowsArray = Array.prototype.slice.call(rows, 0);
+                var rowsArray = _.toArray(rows);
                 rowsArray.forEach(function (value) {
                     value.removeEventListener('click', this.addToCartProxy);
                 }.bind(this));

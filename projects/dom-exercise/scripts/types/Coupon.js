@@ -1,4 +1,5 @@
-define([], function () {
+define(['zaifan'], function (faker) {
+    'use strict';
     return {
         generateCoupon: function CouponItem(type, amount) {
             this.code = faker.hacker.abbreviation() + faker.finance.mask();
@@ -49,8 +50,8 @@ define([], function () {
         init: function () {
             this.mockCoupons.forEach(function (value) {
                 this.addCouponToList(value);
-            }.bind(this))
+            }.bind(this));
         }
-    }
+    };
 });
 

@@ -1,4 +1,5 @@
 define([], function () {
+    'use strict';
     return function Item(id, image, name, description, limit, price, currency) {
 
         this.id = id;
@@ -9,6 +10,6 @@ define([], function () {
         this.price = price;
         this.currency = currency;
 
-    }
+    };
 });
 

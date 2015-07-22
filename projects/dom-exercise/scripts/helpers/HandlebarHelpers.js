@@ -1,4 +1,5 @@
-define(['handlebars', '../Cart'], function (Handlebars, Cart) {
+define(['handlebars'], function (Handlebars) {
+    'use strict';
     return function () {
         Handlebars.registerHelper('itemTotal',
             function (itemData) {
@@ -24,15 +25,15 @@ define(['handlebars', '../Cart'], function (Handlebars, Cart) {
                 if (itemData.discountAmount) {
                     var discountedPrice = itemData.price - itemData.discountAmount;
                     result = '<span class="full-price">' + itemData.currency + itemData.price +
-                        '</span><br><span class="discount-price">' + itemData.currency + discountedPrice + '</span>'
+                        '</span><br><span class="discount-price">' + itemData.currency + discountedPrice + '</span>';
                 } else {
                     result = itemData.currency + itemData.price;
                 }
                 return new Handlebars.SafeString(result);
             });
 
-        Handlebars.registerHelper("log", function (something) {
+        Handlebars.registerHelper('log', function (something) {
             console.log(something);
         });
-    }
+    };
 });

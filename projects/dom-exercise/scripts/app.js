@@ -1,7 +1,9 @@
 
 requirejs.config({
     paths: {
-        handlebars: './libs/handlebars'
+        handlebars: './libs/handlebars',
+        lodash: './libs/lodash',
+        zaifan: './libs/zaifan'
     }
 });
 
